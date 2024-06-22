@@ -86,13 +86,14 @@ class LoginPageState extends State<LoginPage> {
                 ),
               ),
 
+             SizedBox(height: 10),
               //sign in
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child:Container(
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: Colors.deepPurple,
+                  color: Color.fromARGB(255, 237, 46, 97),
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                   ),
                 child: Center(
