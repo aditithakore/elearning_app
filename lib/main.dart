@@ -1,3 +1,4 @@
+import 'package:elearning_app/pages/colorShapes/colorShapesUI.dart';
 import 'package:elearning_app/pages/login_page.dart';
 import 'package:elearning_app/pages/matchFruit/matchFruitsUI.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MatchFruitsUI(),
+      home: ColorShapesUI(),
     );
   }
 }

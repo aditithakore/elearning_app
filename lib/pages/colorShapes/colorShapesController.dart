@@ -1,31 +1,64 @@
-import 'package:flutter/material.dart';
+import 'dart:math';
 import 'package:get/get.dart';
 
-import 'colorsShapesModel.dart';
+class ColorShapeController extends GetxController {
+  var colorName = "".obs;
+  var isSuccess = false.obs;
+  var box1 = ''.obs;
+  var box2 = ''.obs;
+  var box3 = ''.obs;
 
-class ColorShapeController extends GetxController{
-  final List<ColorsShapesModel> _shapes=[
-    ColorsShapesModel(shape: 'Circle', color:Colors.blue),
-    ColorsShapesModel(shape: 'Square', color:Colors.green),
-    ColorsShapesModel(shape: 'Triangle', color:Colors.amber),
-    ColorsShapesModel(shape: 'Rectangle', color:Colors.pink),
-  ];
-  final _currentIndex=0.obs;
-  final _score=0.obs;
-  List<ColorsShapesModel> get shapes=>_shapes;
+  var colorNames = [
+    "Red",
+    "Green",
+    "Blue",
+  ].obs;
+  var colorsLen = 0.obs;
 
-  int get currentIndex=>_currentIndex.value;
-  int get score=>_score.value;
-
-  void nextShape(){
-    _currentIndex.value=(_currentIndex.value+1)%_shapes.length;
+  ColorShapeController() {
+    colorsLen.value = colorNames.length; // Initialize colorsLen in the constructor
+    reset(); // Optionally reset to initialize colorName and shuffle colorNames
   }
-  void handleTap(int index){
-    if(index == _currentIndex){
-      nextShape();
+
+  void checkColor(String selectedColorName) {
+    print('selectedColorName: ${selectedColorName}');
+    print('colorName.value: ${colorName.value}');
+    if (selectedColorName.toLowerCase() == colorName.value.toLowerCase()) {
+      isSuccess.value = true;
+    } else {
+      isSuccess.value = false;
     }
-    else{
-      print("Try Again");
+  }
+
+  void reset() {
+    // Set isSuccess to false
+    isSuccess.value = false;
+
+    // Shuffle colorNames list to randomize the order
+    colorNames.shuffle();
+
+    // Set colorName.value to a random color from colorNames list
+    int randomIndex = Random().nextInt(colorNames.length);
+    colorName.value = colorNames[randomIndex];
+
+    // Assign box1, box2, and box3 values randomly from colorNames list
+    List<int> indices = [0, 1, 2]; // Indices to choose from
+    indices.shuffle(); // Shuffle indices
+
+    box1.value = colorNames[indices[0]];
+    box2.value = colorNames[indices[1]];
+    box3.value = colorNames[indices[2]];
+
+    // Ensure that one of box1, box2, or box3 matches colorName.value
+    if (colorName.value != box1.value && colorName.value != box2.value && colorName.value != box3.value) {
+      int randomBoxIndex = Random().nextInt(3); // Randomly select one of the boxes
+      if (randomBoxIndex == 0) {
+        box1.value = colorName.value;
+      } else if (randomBoxIndex == 1) {
+        box2.value = colorName.value;
+      } else {
+        box3.value = colorName.value;
+      }
     }
   }
 }
