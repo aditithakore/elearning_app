@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:elearning_app/pages/colorShapes/colorShapesController.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
 class ColorShapesUI extends StatelessWidget {
   final ColorShapeController colorController = Get.put(ColorShapeController());
@@ -8,6 +10,10 @@ class ColorShapesUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     colorController.reset();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
 
     return Scaffold(
       appBar: AppBar(
@@ -22,7 +28,7 @@ class ColorShapesUI extends StatelessWidget {
               colorController.colorName.value,
               style: TextStyle(color: _getColor(colorController.colorName.value), fontSize: 24),
             )),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -55,13 +61,18 @@ class ColorShapesUI extends StatelessWidget {
                       Container(
                         width: Get.width * 0.2,
                         height: Get.height * 0.2,
-                        color:
-                        colorController.box1.value.toLowerCase() == 'red' ?
-                        Colors.red:
-                        colorController.box1.value.toLowerCase() == 'green'?
-                        Colors.green:
-                        colorController.box1.value.toLowerCase() == 'blue'?
-                        Colors.blue:Colors.black,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color:
+                            colorController.box1.value.toLowerCase() == 'red' ?
+                            Colors.red:
+                            colorController.box1.value.toLowerCase() == 'green'?
+                            Colors.green:
+                            colorController.box1.value.toLowerCase() == 'blue'?
+                            Colors.blue:Colors.black,
+                          shape: BoxShape.circle
+                        ),
+
                         child: Text(colorController.box1.value),
                       ),
                   ),
@@ -113,28 +124,38 @@ class ColorShapesUI extends StatelessWidget {
                   ),
                   )
 
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10),
+                Obx(()=>
+                    Text('Score: ${colorController.score.value}', style: TextStyle(fontSize: 24),)),
+
+                SizedBox(height: 10),
+                Obx(() =>
+                colorController.isSuccess.value
+                    ? Text(
+                  'Success!',
+                  style: TextStyle(color: Colors.green, fontSize: 24),
+                )
+                    : colorController.isFailed.value
+                    ? Text(
+                  'Failed!',
+                  style: TextStyle(color: Colors.red, fontSize: 24),
+                )
+                    : Container()),
+                SizedBox(height: 5),
+                ElevatedButton(
+                  onPressed: () {
+                    colorController.reset();
+                    colorController.colorNames.refresh(); // Refresh the observable list
+                  },
+                  child: Text('Next'),
                 ),
               ],
             ),
-            SizedBox(height: 20),
-            Obx(() => colorController.isSuccess.value
-                ? Text(
-              'Success!',
-              style: TextStyle(color: Colors.green, fontSize: 24),
-            )
-                : Container()),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                colorController.reset();
-                colorController.colorNames.refresh(); // Refresh the observable list
-              },
-              child: Text('Reset'),
-            ),
-          ],
-        ),
-      ),
-    );
+          ),
+        );
   }
 
   Color _getColor(String colorName) {

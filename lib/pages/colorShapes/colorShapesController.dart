@@ -1,9 +1,12 @@
+import 'dart:ffi';
 import 'dart:math';
 import 'package:get/get.dart';
 
 class ColorShapeController extends GetxController {
+  var dummyText = ''.obs;
   var colorName = "".obs;
   var isSuccess = false.obs;
+  var isFailed=true.obs;
   var box1 = ''.obs;
   var box2 = ''.obs;
   var box3 = ''.obs;
@@ -14,7 +17,9 @@ class ColorShapeController extends GetxController {
     "Blue",
   ].obs;
   var colorsLen = 0.obs;
-
+  var score=0.obs;
+  final int scoreLimit=5;
+  var isGameOver=false.obs;
   ColorShapeController() {
     colorsLen.value = colorNames.length; // Initialize colorsLen in the constructor
     reset(); // Optionally reset to initialize colorName and shuffle colorNames
@@ -25,15 +30,25 @@ class ColorShapeController extends GetxController {
     print('colorName.value: ${colorName.value}');
     if (selectedColorName.toLowerCase() == colorName.value.toLowerCase()) {
       isSuccess.value = true;
+      isFailed.value = false;
+      score.value++;
+      if(score.value>=scoreLimit){
+        isGameOver.value=true;
+      }
     } else {
       isSuccess.value = false;
+      isFailed.value=true;
     }
   }
 
   void reset() {
+    if (isGameOver.value) {
+      score.value = 0;
+      isGameOver.value = false;
+    }
     // Set isSuccess to false
     isSuccess.value = false;
-
+    isFailed.value=false;
     // Shuffle colorNames list to randomize the order
     colorNames.shuffle();
 
