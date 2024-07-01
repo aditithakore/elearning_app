@@ -24,15 +24,15 @@ class LoginPageState extends State<LoginPage> {
               // SizedBox(height:75),
              
              //hello again
-              Text(
+              const Text(
                 'Hello Again!',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 36,
                 ),
               ),
-              SizedBox(height: 10),
-              Text(
+              const SizedBox(height: 10),
+              const Text(
                 'Welcome back, you\'ve been missed!',
                 style: TextStyle(
                   fontSize: 20,
@@ -49,8 +49,8 @@ class LoginPageState extends State<LoginPage> {
                     border: Border.all(color: Colors.white),
                     borderRadius: BorderRadius.all(Radius.circular(12)),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 20.0),
                     child: TextField(
                       obscureText: true,
                       decoration: InputDecoration(
