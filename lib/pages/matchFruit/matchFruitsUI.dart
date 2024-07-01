@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import 'matchFruitsController.dart';
@@ -8,6 +9,10 @@ class MatchFruitsUI extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
     return Scaffold(
       appBar: AppBar(
         title: Text('Drag and Drop Game'),
@@ -24,7 +29,7 @@ class MatchFruitsUI extends StatelessWidget {
           ),
           SizedBox(height: 20),
           Expanded(
-            child: Column(
+            child: Row(
               children: [
                 Expanded(
                   child: Obx(() => GridView.builder(
@@ -33,22 +38,24 @@ class MatchFruitsUI extends StatelessWidget {
                       crossAxisSpacing: 4.0,
                       mainAxisSpacing: 4.0,
                     ),
-                    itemCount: controller.gameLogic.items.length,
+                    itemCount: controller.items.length,
                     itemBuilder: (context, index) {
-                      final item = controller.gameLogic.items[index];
+                      final item = controller.items[index];
                       return DragTarget<ImageItem>(
                         onAccept: (draggedItem) {
                           controller.matchItem(item, draggedItem);
+
                         },
                         builder: (context, candidateData, rejectedData) {
                           return Obx(() => Container(
+                            height: Get.height*0.04,
                             margin: EdgeInsets.all(4),
                             decoration: BoxDecoration(
-                              color: controller.matchedItems.contains(item.id)
-                                  ? Colors.transparent
-                                  : Colors.transparent,
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(color: Colors.grey.shade200)
+                                color: controller.matchedItems.contains(item.id)
+                                    ? Colors.transparent
+                                    : Colors.transparent,
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(color: Colors.grey.shade400)
                             ),
                             child: Center(
                               child: controller.matchedItems.contains(item.id)
@@ -64,21 +71,21 @@ class MatchFruitsUI extends StatelessWidget {
                 Expanded(
                   child:
                   // Obx(() =>
-                      GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                       crossAxisSpacing: 4.0,
                       mainAxisSpacing: 4.0,
                     ),
-                      itemCount: controller.gameLogic.shuffledItems.length,
-                      itemBuilder: (context, index) {
-                      final item = controller.gameLogic.shuffledItems[index];
+                    itemCount: controller.shuffledItems.length,
+                    itemBuilder: (context, index) {
+                      final item = controller.shuffledItems[index];
                       return Draggable<ImageItem>(
                         data: item,
                         feedback: Image.asset(
                           item.imagePath,
-                          width: 100,
-                          height: 100,
+                          width: 50,
+                          height: 50,
                           fit: BoxFit.cover,
                         ),
                         childWhenDragging: Container(
@@ -90,13 +97,14 @@ class MatchFruitsUI extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: controller.matchedItems.contains(item.id)
-                              ? Container() // Show nothing if matched
+                              ? Container(
+                            child:Obx(()=>Text(controller.matchedMessage.value)) ,)// Show nothing if matched
                               : Image.asset(item.imagePath),
                         )),
                       );
                     },
                   ),
-                  ),
+                ),
                 // ),
               ],
             ),
