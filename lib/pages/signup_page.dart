@@ -38,16 +38,16 @@ class SignupPage extends StatelessWidget {
                 ),
                 Column(
                   children: <Widget>[
-                    TextField(
-                      decoration: InputDecoration(
-                          hintText: "Username",
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(18),
-                              borderSide: BorderSide.none),
-                          fillColor: Colors.purple.withOpacity(0.1),
-                          filled: true,
-                          prefixIcon: const Icon(Icons.person)),
-                    ),
+                    // TextField(
+                    //   decoration: InputDecoration(
+                    //       hintText: "Username",
+                    //       border: OutlineInputBorder(
+                    //           borderRadius: BorderRadius.circular(18),
+                    //           borderSide: BorderSide.none),
+                    //       fillColor: Colors.purple.withOpacity(0.1),
+                    //       filled: true,
+                    //       prefixIcon: const Icon(Icons.person)),
+                    // ),
                     const SizedBox(height: 20),
                     TextField(
                       decoration: InputDecoration(
