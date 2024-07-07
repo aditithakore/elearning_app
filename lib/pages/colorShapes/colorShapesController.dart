@@ -76,4 +76,8 @@ class ColorShapeController extends GetxController {
       }
     }
   }
+  void replay(){
+    reset();
+  }
+
 }
