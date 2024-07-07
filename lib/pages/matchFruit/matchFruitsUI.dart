@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import 'matchFruitsController.dart';
 import 'matchFruitsModel.dart';
+
 class MatchFruitsUI extends StatelessWidget {
   final MatchFruitsController controller = Get.put(MatchFruitsController());
 
@@ -13,100 +14,116 @@ class MatchFruitsUI extends StatelessWidget {
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
     ]);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Drag and Drop Game'),
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              controller.reset();
+            },
+            child: Text('Replay'),
+          ),
+        ],
       ),
       body: Column(
         children: [
           SizedBox(height: 20),
-          Text(
-            'Match the Fruits!',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
+          Obx(() => Center(
+            child: Text(
+              controller.isSuccess.value ? 'Congratulations' : 'Match the Fruits!',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
+          )),
           SizedBox(height: 20),
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  child: Obx(() => GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 4.0,
-                      mainAxisSpacing: 4.0,
+          Obx(
+                () => !controller.isSuccess.value
+                ? Expanded(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: controller.items.map((item) {
+                        return DragTarget<ImageItem>(
+                          onAccept: (draggedItem) {
+                            controller.matchItem(item, draggedItem);
+                          },
+                          builder: (context, candidateData, rejectedData) {
+                            return Obx(
+                                  () => Card(
+                                elevation: 4,
+                                child: Container(
+                                  height: 70,
+                                  width: 70,
+                                  margin: EdgeInsets.all(4),
+                                  decoration: BoxDecoration(
+                                    color: controller.matchedItems.contains(item.id)
+                                        ? Colors.transparent
+                                        : Colors.transparent,
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(color: Colors.grey.shade400),
+                                  ),
+                                  child: Center(
+                                    child: controller.matchedItems.contains(item.id)
+                                        ? Container(child: Icon(Icons.check_circle))
+                                        : Image.asset(item.imagePath, height: 50, width: 50),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      }).toList(), // Show exactly 3 items in the upper row
                     ),
-                    itemCount: controller.items.length,
-                    itemBuilder: (context, index) {
-                      final item = controller.items[index];
-                      return DragTarget<ImageItem>(
-                        onAccept: (draggedItem) {
-                          controller.matchItem(item, draggedItem);
-
-                        },
-                        builder: (context, candidateData, rejectedData) {
-                          return Obx(() => Container(
-                            height: Get.height*0.04,
-                            margin: EdgeInsets.all(4),
-                            decoration: BoxDecoration(
-                                color: controller.matchedItems.contains(item.id)
-                                    ? Colors.transparent
-                                    : Colors.transparent,
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: Colors.grey.shade400)
-                            ),
-                            child: Center(
-                              child: controller.matchedItems.contains(item.id)
-                                  ? Container(child: Icon(Icons.check_circle)) // Show nothing if matched
-                                  : Image.asset(item.imagePath),
-                            ),
-                          ));
-                        },
-                      );
-                    },
-                  )),
-                ),
-                Expanded(
-                  child:
-                  // Obx(() =>
-                  GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 4.0,
-                      mainAxisSpacing: 4.0,
-                    ),
-                    itemCount: controller.shuffledItems.length,
-                    itemBuilder: (context, index) {
-                      final item = controller.shuffledItems[index];
-                      return Draggable<ImageItem>(
-                        data: item,
-                        feedback: Image.asset(
-                          item.imagePath,
-                          width: 50,
-                          height: 50,
-                          fit: BoxFit.cover,
-                        ),
-                        childWhenDragging: Container(
-                          color: Colors.grey,
-                        ),
-                        child: Obx(() => Container(
-                          margin: EdgeInsets.all(4),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: controller.matchedItems.contains(item.id)
-                              ? Container(
-                            child:Obx(()=>Text(controller.matchedMessage.value)) ,)// Show nothing if matched
-                              : Image.asset(item.imagePath),
-                        )),
-                      );
-                    },
                   ),
-                ),
-                // ),
-              ],
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: controller.shuffledItems.map((item) {
+                        return Draggable<ImageItem>(
+                          data: item,
+                          feedback: Image.asset(
+                            item.imagePath,
+                            width: 50,
+                            height: 50,
+                          ),
+                          childWhenDragging: Container(
+                            color: Colors.yellowAccent,
+                          ),
+                          child: Obx(
+                                () => Card(
+                              elevation: 4,
+                              child: Container(
+                                height: 70,
+                                width: 70,
+                                margin: EdgeInsets.all(4),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(color: Colors.grey.shade500),
+                                ),
+                                child: controller.matchedItems.contains(item.id)
+                                    ? Container(child: Obx(() => Text(controller.matchedMessage.value)))
+                                    : Image.asset(item.imagePath, height: 50, width: 50),
+                              ),
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                ],
+              ),
+            )
+                : ElevatedButton(
+              onPressed: () {
+                controller.reset();
+              },
+              child: Text('Replay'),
             ),
           ),
         ],
