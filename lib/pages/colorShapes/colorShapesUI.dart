@@ -28,29 +28,12 @@ class ColorShapesUI extends StatelessWidget {
               colorController.colorName.value,
               style: TextStyle(color: _getColor(colorController.colorName.value), fontSize: 24),
             )),
-            SizedBox(height: 10),
+            SizedBox(height: 5),
+            Obx(()=>
+            !colorController.isGameOver.value?
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                // for (int index = 0; index < colorController.colorNames.length; index++)
-                //   GestureDetector(
-                //     onTap: () {
-                //       colorController.checkColor(colorController.colorNames[index]);
-                //     },
-                //     child: Container(
-                //       width: 80,
-                //       height: 80,
-                //       color: _getColor(colorController.colorNames[index]),
-                //       child: Center(
-                //         child: Text(
-                //           colorController.colorNames[index],
-                //           style: TextStyle(color: Colors.white),
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-
-
+              children:[
                 GestureDetector(
                   onTap: (){
                     print("box1: ${colorController.box1.value}");
@@ -59,19 +42,16 @@ class ColorShapesUI extends StatelessWidget {
                   child:
                   Obx(()=>
                       Container(
-                        width: Get.width * 0.2,
-                        height: Get.height * 0.2,
+                        width: Get.width * 0.1,
+                        height: Get.height * 0.18,
                         alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            color:
-                            colorController.box1.value.toLowerCase() == 'red' ?
-                            Colors.red:
-                            colorController.box1.value.toLowerCase() == 'green'?
-                            Colors.green:
-                            colorController.box1.value.toLowerCase() == 'blue'?
-                            Colors.blue:Colors.black,
-                          shape: BoxShape.circle
-                        ),
+                        color: colorController.box1.value.toLowerCase() == 'red' ?
+                        Colors.red:
+                        colorController.box1.value.toLowerCase() == 'green'?
+                        Colors.green:
+                        colorController.box1.value.toLowerCase() == 'blue'?
+                        Colors.blue:Colors.black,
+
 
                         child: Text(colorController.box1.value),
                       ),
@@ -87,8 +67,9 @@ class ColorShapesUI extends StatelessWidget {
                   child:
                   Obx(()=>
                       Container(
-                        width: Get.width * 0.2,
-                        height: Get.height * 0.2,
+                        alignment: Alignment.center,
+                        width: Get.width * 0.1,
+                        height: Get.height * 0.18,
                         color:
                         colorController.box2.value.toLowerCase() == 'red' ?
                         Colors.red:
@@ -103,35 +84,45 @@ class ColorShapesUI extends StatelessWidget {
 
                 ),
                 GestureDetector(
-                  onTap: (){
-                    print("box3: ${colorController.box3.value}");
+                    onTap: (){
+                      print("box3: ${colorController.box3.value}");
 
-                    colorController.checkColor(colorController.box3.value);
-                  },
-                  child:
-                  Obx(() =>
-                  Container(
-                    width: Get.width * 0.2,
-                    height: Get.height * 0.2,
-                    color:
-                    colorController.box3.value.toLowerCase() == 'red' ?
-                    Colors.red:
-                    colorController.box3.value.toLowerCase() == 'green'?
-                    Colors.green:
-                    colorController.box3.value.toLowerCase() == 'blue'?
-                    Colors.blue:Colors.black,
-                    child: Text(colorController.box3.value),
-                  ),
-                  )
+                      colorController.checkColor(colorController.box3.value);
+                    },
+                    child:
+                    Obx(() =>
+                        Container(
+                          width: Get.width * 0.1,
+                          height: Get.height * 0.18,
+                          alignment: Alignment.center,
+                          color:
+                          colorController.box3.value.toLowerCase() == 'red' ?
+                          Colors.red:
+                          colorController.box3.value.toLowerCase() == 'green'?
+                          Colors.green:
+                          colorController.box3.value.toLowerCase() == 'blue'?
+                          Colors.blue:Colors.black,
+                          child: Text(colorController.box3.value),
+                        ),
+                    )
 
-                    ),
-                  ],
                 ),
-                SizedBox(height: 10),
-                Obx(()=>
-                    Text('Score: ${colorController.score.value}', style: TextStyle(fontSize: 24),)),
+              ],
+            ):
+            ElevatedButton(
+              onPressed: () {
+                colorController.replay();
+                // Get.to(ColorShapesUI());  // Reset the game
+              },
+              child: Text('Replay'),
+            ),
+            ),
 
-                SizedBox(height: 10),
+                SizedBox(height: 5),
+                Obx(()=>
+                    Text('Score: ${colorController.score.value}', style: TextStyle(fontSize: 20),)),
+
+                SizedBox(height: 5),
                 Obx(() =>
                 colorController.isSuccess.value
                     ? Text(
@@ -145,13 +136,14 @@ class ColorShapesUI extends StatelessWidget {
                 )
                     : Container()),
                 SizedBox(height: 5),
-                ElevatedButton(
-                  onPressed: () {
-                    colorController.reset();
-                    colorController.colorNames.refresh(); // Refresh the observable list
-                  },
+                  Obx(()=>!colorController.isGameOver.value?
+                  ElevatedButton(
+                    onPressed: () {
+                      colorController.reset();
+                      colorController.colorNames.refresh(); // Refresh the observable list
+                    },
                   child: Text('Next'),
-                ),
+                ):Container()),
               ],
             ),
           ),
