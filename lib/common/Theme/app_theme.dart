@@ -22,11 +22,11 @@ class AppTheme {
       foregroundColor: Colors.white,
     ),
 
-    textTheme: TextTheme(
-      bodyLarge: TextStyle(color: Colors.black87, fontSize: 18),
-      bodyMedium: TextStyle(color: Colors.black87, fontSize: 16),
-      titleLarge: TextStyle(color: primaryOrange, fontSize: 24, fontWeight: FontWeight.bold),
-    ),
+    // textTheme: TextTheme(
+    //   bodyLarge: TextStyle(color: Colors.black87, fontSize: 18),
+    //   bodyMedium: TextStyle(color: Colors.black87, fontSize: 16),
+    //   titleLarge: TextStyle(color: primaryOrange, fontSize: 24, fontWeight: FontWeight.bold),
+    // ),
 
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
