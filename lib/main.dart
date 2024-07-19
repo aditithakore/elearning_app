@@ -1,3 +1,4 @@
+
 import 'package:elearning_app/pages/colorShapes/colorShapesUI.dart';
 import 'package:elearning_app/pages/guessAnimal/guessAnimalUI.dart';
 import 'package:elearning_app/pages/login_page.dart';
@@ -13,19 +14,17 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'Flutter Demo',
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: MatchFruitsUI(),
+      home: LoginPage(),
+      routes: {
+        '/loginpage': (context) => LoginPage(),
+        '/signuppage': (context) => SignupPage(),
+        '/dashboardscreenpage': (context) => DashBoardScreen(),
+      },
     );
   }
 }
-
 
