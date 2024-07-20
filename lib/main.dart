@@ -18,12 +18,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
-      routes: {
-        '/loginpage': (context) => LoginPage(),
-        '/signuppage': (context) => SignupPage(),
-        '/dashboardscreenpage': (context) => DashBoardScreen(),
-      },
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: ColorShapesUI(),
+
     );
   }
 }
