@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -40,10 +41,20 @@ class LoginPageState extends State<LoginPage> {
   }
 
   Widget _header(context) {
-    return const Text(
-      "Welcome!",
-      style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-      textAlign: TextAlign.center,
+    return Column(
+      children: [
+        const Text(
+          "Welcome!",
+          style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 10),
+        SvgPicture.asset(
+          'assets/icons/cat.svg',
+          height: 140,
+          width: 80.0,
+        ),
+      ],
     );
   }
 
@@ -140,11 +151,11 @@ class LoginPageState extends State<LoginPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // SvgPicture.asset(
-            //   'assets/icons/icons8-google.svg',
-            //   height: 30.0,
-            //   width: 30.0,
-            // ),
+            SvgPicture.asset(
+              'assets/icons/icons8-google.svg',
+              height: 30.0,
+              width: 30.0,
+            ),
             const SizedBox(width: 18),
             const Text(
               "Sign In with Google",
