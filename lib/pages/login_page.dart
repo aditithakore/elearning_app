@@ -58,7 +58,7 @@ class LoginPageState extends State<LoginPage> {
               borderRadius: BorderRadius.circular(18),
               borderSide: BorderSide.none,
             ),
-            fillColor: Colors.purple.withOpacity(0.1),
+            fillColor: Colors.blue.withOpacity(0.1),
             filled: true,
             prefixIcon: const Icon(Icons.person),
           ),
@@ -71,7 +71,7 @@ class LoginPageState extends State<LoginPage> {
               borderRadius: BorderRadius.circular(18),
               borderSide: BorderSide.none,
             ),
-            fillColor: Colors.purple.withOpacity(0.1),
+            fillColor: Colors.blue.withOpacity(0.1),
             filled: true,
             prefixIcon: const Icon(Icons.password),
           ),
@@ -83,7 +83,7 @@ class LoginPageState extends State<LoginPage> {
           style: ElevatedButton.styleFrom(
             shape: const StadiumBorder(),
             padding: const EdgeInsets.symmetric(vertical: 16),
-            backgroundColor: Colors.purple,
+            backgroundColor: Colors.blue,
           ),
           child: const Text(
             "Login",
@@ -101,7 +101,7 @@ class LoginPageState extends State<LoginPage> {
         onPressed: () {},
         child: const Text(
           "Forgot password?",
-          style: TextStyle(color: Colors.purple),
+          style: TextStyle(color: Colors.blue),
         ),
       ),
     );
@@ -125,7 +125,7 @@ class LoginPageState extends State<LoginPage> {
       height: 55,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25),
-        border: Border.all(color: Colors.purple),
+        border: Border.all(color: Colors.blue),
         boxShadow: [
           BoxShadow(
             color: Colors.white.withOpacity(0.5),
@@ -150,7 +150,7 @@ class LoginPageState extends State<LoginPage> {
               "Sign In with Google",
               style: TextStyle(
                 fontSize: 16,
-                color: Colors.purple,
+                color: Colors.blue,
               ),
             ),
           ],
@@ -168,7 +168,7 @@ class LoginPageState extends State<LoginPage> {
           onPressed: () {},
           child: const Text(
             "Sign Up",
-            style: TextStyle(color: Colors.purple),
+            style: TextStyle(color: Colors.blue),
           ),
         ),
       ],
