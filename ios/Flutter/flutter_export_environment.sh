@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=C:\Users\HP\Downloads\flutter_windows_3.19.6-stable\flutter"
-export "FLUTTER_APPLICATION_PATH=C:\Users\HP\Desktop\WT\JavaScript\Module 1\elearning_app"
+export "FLUTTER_ROOT=E:\src\flutter"
+export "FLUTTER_APPLICATION_PATH=D:\E-Learning Project\elearning_app"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib\main.dart"
 export "FLUTTER_BUILD_DIR=build"

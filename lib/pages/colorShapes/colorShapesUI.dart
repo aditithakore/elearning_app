@@ -51,17 +51,25 @@ class ColorShapesUI extends StatelessWidget {
                         width: Get.width * 0.1,
                         height: Get.height * 0.18,
                         alignment: Alignment.center,
-                        color: colorController.box1.value.toLowerCase() == 'red' ?
-                        Colors.red:
-                        colorController.box1.value.toLowerCase() == 'green'?
-                        Colors.green:
-                        colorController.box1.value.toLowerCase() == 'blue'?
-                        Colors.blue:
-                        colorController.box1.value.toLowerCase() == 'orange'?
-                        Colors.orange:
-                        colorController.box1.value.toLowerCase() == 'yellow'?
-                        Colors.yellow:
-                        Colors.black,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 2,
+                            color:Colors.black12
+                          ),
+                            borderRadius: BorderRadius.circular(5),
+                          color: colorController.box1.value.toLowerCase() == 'red' ?
+                          Colors.red:
+                          colorController.box1.value.toLowerCase() == 'green'?
+                          Colors.green:
+                          colorController.box1.value.toLowerCase() == 'blue'?
+                          Colors.blue:
+                          colorController.box1.value.toLowerCase() == 'orange'?
+                          Colors.orange:
+                          colorController.box1.value.toLowerCase() == 'yellow'?
+                          Colors.yellow:
+                          Colors.black,
+                        ),
+
 
 
                         child: Text(colorController.box1.value),
