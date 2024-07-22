@@ -10,6 +10,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {
   runApp(const MyApp());
+  
 }
 
 class MyApp extends StatelessWidget {
@@ -17,14 +18,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
+    return GetMaterialApp(
+      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
-      routes: {
-        '/loginpage': (context) => LoginPage(),
-        '/signuppage': (context) => SignupPage(),
-        '/dashboardscreenpage': (context) => DashBoardScreen(),
-      },
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: MatchFruitsUI(),
+
     );
   }
 }

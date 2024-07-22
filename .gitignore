@@ -9,6 +9,8 @@
 .history
 .svn/
 migrate_working_dir/
+package_config
+.gradle/
 
 # IntelliJ related
 *.iml

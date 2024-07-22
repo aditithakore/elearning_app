@@ -24,7 +24,13 @@ class ColorShapesUI extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Obx(() => Text(
+            Obx(() =>
+            colorController.score.value == 5 ?
+                Text(
+                  'Congratulations',
+                  style: TextStyle(color: Colors.black, fontSize: 24),
+                ):
+                Text(
               colorController.colorName.value,
               style: TextStyle(color: _getColor(colorController.colorName.value), fontSize: 24),
             )),
@@ -45,12 +51,25 @@ class ColorShapesUI extends StatelessWidget {
                         width: Get.width * 0.1,
                         height: Get.height * 0.18,
                         alignment: Alignment.center,
-                        color: colorController.box1.value.toLowerCase() == 'red' ?
-                        Colors.red:
-                        colorController.box1.value.toLowerCase() == 'green'?
-                        Colors.green:
-                        colorController.box1.value.toLowerCase() == 'blue'?
-                        Colors.blue:Colors.black,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 2,
+                            color:Colors.black12
+                          ),
+                            borderRadius: BorderRadius.circular(5),
+                          color: colorController.box1.value.toLowerCase() == 'red' ?
+                          Colors.red:
+                          colorController.box1.value.toLowerCase() == 'green'?
+                          Colors.green:
+                          colorController.box1.value.toLowerCase() == 'blue'?
+                          Colors.blue:
+                          colorController.box1.value.toLowerCase() == 'orange'?
+                          Colors.orange:
+                          colorController.box1.value.toLowerCase() == 'yellow'?
+                          Colors.yellow:
+                          Colors.black,
+                        ),
+
 
 
                         child: Text(colorController.box1.value),
@@ -76,7 +95,12 @@ class ColorShapesUI extends StatelessWidget {
                         colorController.box2.value.toLowerCase() == 'green'?
                         Colors.green:
                         colorController.box2.value.toLowerCase() == 'blue'?
-                        Colors.blue:Colors.black,
+                        Colors.blue:
+                        colorController.box2.value.toLowerCase() == 'orange'?
+                        Colors.orange:
+                        colorController.box2.value.toLowerCase() == 'yellow'?
+                        Colors.yellow:
+                        Colors.black,
                         child: Text(colorController.box2.value),
                       )
                   ),
@@ -100,6 +124,10 @@ class ColorShapesUI extends StatelessWidget {
                           Colors.red:
                           colorController.box3.value.toLowerCase() == 'green'?
                           Colors.green:
+                          colorController.box3.value.toLowerCase() == 'orange'?
+                          Colors.orange:
+                          colorController.box3.value.toLowerCase() == 'yellow'?
+                          Colors.yellow:
                           colorController.box3.value.toLowerCase() == 'blue'?
                           Colors.blue:Colors.black,
                           child: Text(colorController.box3.value),
@@ -154,10 +182,14 @@ class ColorShapesUI extends StatelessWidget {
     switch (colorName.toLowerCase()) {
       case "red":
         return Colors.red;
-      case "green":
+        case "green":
         return Colors.green;
-      case "blue":
+        case "blue":
         return Colors.blue;
+        case "yellow":
+        return Colors.yellow;
+        case "orange":
+        return Colors.orange;
       default:
         return Colors.black;
     }
