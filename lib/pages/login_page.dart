@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:elearning_app/pages/signup_page.dart';
 import 'package:flutter_svg/svg.dart';
+
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -176,7 +179,12 @@ class LoginPageState extends State<LoginPage> {
       children: [
         const Text("Don't have an account? "),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const SignupPage()),
+          );
+        },
           child: const Text(
             "Sign Up",
             style: TextStyle(color: Colors.blue),
