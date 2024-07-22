@@ -1,4 +1,4 @@
-# E-Learning Application for Specially Abled Kids
+# E-Learning Application for Specially Abled Kids (Ongoing project)
 
 ## Table of Contents
 - [Introduction](#introduction)
