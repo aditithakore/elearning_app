@@ -1,3 +1,4 @@
+
 import 'package:elearning_app/pages/colorShapes/colorShapesUI.dart';
 import 'package:elearning_app/pages/guessAnimal/guessAnimalUI.dart';
 import 'package:elearning_app/pages/login_page.dart';
@@ -13,7 +14,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -26,8 +26,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: ColorShapesUI(),
+
     );
   }
 }
-
 
