@@ -53,7 +53,7 @@
       "name": "flutter",
       "rootUri": "file:///C:/Users/Aditi/Downloads/flutter_windows_3.19.6-stable/flutter/packages/flutter",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.3"
     },
     {
       "name": "flutter_lints",
@@ -71,7 +71,7 @@
       "name": "flutter_test",
       "rootUri": "file:///C:/Users/Aditi/Downloads/flutter_windows_3.19.6-stable/flutter/packages/flutter_test",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.3"
     },
     {
       "name": "flutter_tts",
@@ -105,21 +105,21 @@
     },
     {
       "name": "leak_tracker",
-      "rootUri": "file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker-10.0.0",
+      "rootUri": "file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker-10.0.4",
       "packageUri": "lib/",
-      "languageVersion": "3.1"
+      "languageVersion": "3.2"
     },
     {
       "name": "leak_tracker_flutter_testing",
-      "rootUri": "file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker_flutter_testing-2.0.1",
+      "rootUri": "file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker_flutter_testing-3.0.3",
       "packageUri": "lib/",
-      "languageVersion": "3.1"
+      "languageVersion": "3.2"
     },
     {
       "name": "leak_tracker_testing",
-      "rootUri": "file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker_testing-2.0.1",
+      "rootUri": "file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker_testing-3.0.1",
       "packageUri": "lib/",
-      "languageVersion": "3.1"
+      "languageVersion": "3.2"
     },
     {
       "name": "lints",
@@ -141,7 +141,7 @@
     },
     {
       "name": "meta",
-      "rootUri": "file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.11.0",
+      "rootUri": "file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.12.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -201,7 +201,7 @@
     },
     {
       "name": "test_api",
-      "rootUri": "file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/test_api-0.6.1",
+      "rootUri": "file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/test_api-0.7.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -237,9 +237,9 @@
     },
     {
       "name": "vm_service",
-      "rootUri": "file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/vm_service-13.0.0",
+      "rootUri": "file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/vm_service-14.2.1",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.3"
     },
     {
       "name": "web",
@@ -260,7 +260,10 @@
       "languageVersion": "3.3"
     }
   ],
-  "generated": "2024-07-01T17:27:16.753909Z",
+  "generated": "2024-07-26T12:39:07.201495Z",
   "generator": "pub",
-  "generatorVersion": "3.3.4"
+  "generatorVersion": "3.4.4",
+  "flutterRoot": "file:///C:/Users/Aditi/Downloads/flutter_windows_3.19.6-stable/flutter",
+  "flutterVersion": "3.22.3",
+  "pubCache": "file:///C:/Users/Aditi/AppData/Local/Pub/Cache"
 }

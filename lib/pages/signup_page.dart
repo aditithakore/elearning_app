@@ -48,7 +48,7 @@ class SignupPage extends StatelessWidget {
                     //       filled: true,
                     //       prefixIcon: const Icon(Icons.person)),
                     // ),
-                    const SizedBox(height: 20),
+                    // const SizedBox(height: 20),
                     TextField(
                       decoration: InputDecoration(
                           hintText: "Email",
