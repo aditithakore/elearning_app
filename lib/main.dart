@@ -1,4 +1,5 @@
 
+import 'package:elearning_app/pages/bodyParts/bodyPartsUI.dart';
 import 'package:elearning_app/pages/colorShapes/colorShapesUI.dart';
 import 'package:elearning_app/pages/guessAnimal/guessAnimalUI.dart';
 import 'package:elearning_app/pages/login_page.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: ColorShapesUI(),
+      home: BodyPartsUI(),
 
     );
   }
