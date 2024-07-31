@@ -33,6 +33,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   flutter_tts: ^3.3.0
   http: ^1.2.2
+  google_fonts: ^6.2.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -96,3 +97,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  fonts:
+    - family : Baloo 2
+      fonts:
+        - asset: 'fonts/Baloo2.ttf'
+          weight: 700
+          
