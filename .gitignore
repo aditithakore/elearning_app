@@ -12,6 +12,9 @@ migrate_working_dir/
 package_config
 .gradle/
 
+pubsepc.lock
+pubspec.yaml
+
 # IntelliJ related
 *.iml
 *.ipr
