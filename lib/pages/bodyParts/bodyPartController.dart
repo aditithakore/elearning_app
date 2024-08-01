@@ -21,7 +21,7 @@ class BodyPartController extends GetxController {
 Future<void> fetchBodyParts() async {
   try {
     final response =
-        await http.get(Uri.parse('${baseurl}bodypart'));
+        await http.get(Uri.parse('http://10.0.2.2:3001/bodypart'));
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body);
       print(response.body);

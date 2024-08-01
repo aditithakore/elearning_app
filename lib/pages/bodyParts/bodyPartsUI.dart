@@ -70,7 +70,11 @@ class BodyPartsUI extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Image.network(currentBodyPart.imageUrl),
+                  FadeInImage.assetNetwork(
+                    placeholder: 'assets/placeholder.png', // Replace with your placeholder image asset
+                    image: currentBodyPart.imageUrl,
+                    fadeInDuration: Duration(seconds: 1),
+                  ),
                   SizedBox(height: 20),
                 ],
               ),
@@ -94,6 +98,7 @@ class BodyPartsUI extends StatelessWidget {
               ),
             ).marginOnly(left: height * 0.55),
             // Navigation arrows
+            controller.bodyParts.indexOf(currentBodyPart)!=0?
             Positioned(
               left: height * 0.04,
               top: width * 0,
@@ -102,7 +107,9 @@ class BodyPartsUI extends StatelessWidget {
                 icon: Image.asset('assets/icons/leftA.png'),
                 onPressed: controller.previousBodyPart,
               ),
-            ),
+            ):SizedBox.shrink(),
+
+            controller.bodyParts.indexOf(currentBodyPart) != controller.bodyParts.length - 1?
             Positioned(
               right: height * 0.04,
               top: width * 0,
@@ -111,7 +118,7 @@ class BodyPartsUI extends StatelessWidget {
                 icon: Image.asset('assets/icons/rightA.png'),
                 onPressed: controller.nextBodyPart,
               ),
-            ),
+            ):SizedBox.shrink(),
 
             // Speak button
             //PLEASE JUST WORK ON THIS PART THANKYOU YE MERESE EDIT NAI HORA WELL REMOVE THE BUTTON AND PLACE SMT ELSE CHLEGA
