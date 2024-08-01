@@ -1,11 +1,8 @@
 
-import 'package:elearning_app/pages/bodyParts/bodyPartsUI.dart';
 import 'package:elearning_app/pages/colorShapes/colorShapesUI.dart';
-import 'package:elearning_app/pages/colorsLearning/colorLearningUI.dart';
 import 'package:elearning_app/pages/guessAnimal/guessAnimalUI.dart';
 import 'package:elearning_app/pages/login_page.dart';
 import 'package:elearning_app/pages/matchFruit/matchFruitsUI.dart';
-import 'package:elearning_app/pages/shapeLearning/shapeLearningUI.dart';
 import 'package:elearning_app/pages/signup_page.dart';
 import 'package:elearning_app/screens/dashboard_screen.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +10,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {
   runApp(const MyApp());
+  
 }
 
 class MyApp extends StatelessWidget {
@@ -20,13 +18,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
+    return GetMaterialApp(
+      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: ShapeLearningUI(),
+      home: MatchFruitsUI(),
 
     );
   }
