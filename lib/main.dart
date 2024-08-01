@@ -8,6 +8,7 @@ import 'package:elearning_app/pages/matchFruit/matchFruitsUI.dart';
 import 'package:elearning_app/pages/memoryGame/memoryGameUI.dart';
 import 'package:elearning_app/pages/shapeLearning/shapeLearningUI.dart';
 import 'package:elearning_app/pages/signup_page.dart';
+import 'package:elearning_app/screens/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
