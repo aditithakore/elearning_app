@@ -87,6 +87,20 @@ class ColorLearningUI extends StatelessWidget {
                 ],
               ),
             ).marginOnly(left: height * 0.55),
+          
+          //lion image
+            Positioned(
+              bottom: width * 0,
+              left: width * 0.12,
+              child: Image.network(
+                'https://i.imgur.com/mIsCX9I.png',
+                width: width * 0.45,  // Adjust width as needed
+                height: height * 0.35, // Adjust height as needed
+                fit: BoxFit.contain,
+              ),
+            ),
+
+
             // Navigation arrows
             controller.colors.indexOf(currentColor) != 0
                 ? Positioned(
@@ -114,8 +128,8 @@ class ColorLearningUI extends StatelessWidget {
 
             // Speak button
             Positioned(
-              bottom: 20,
-              left: 0,
+              bottom: width * 0.15,
+              left: height * 0.01,
               right: 0,
               child: Center(
                 child: ElevatedButton(
