@@ -1,7 +1,7 @@
-import 'package:elearning_app/pages/memoryGame/gameManager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'flip_animation.dart';
+import 'gameManager.dart';
 
 class WordTile extends StatelessWidget {
   const WordTile({

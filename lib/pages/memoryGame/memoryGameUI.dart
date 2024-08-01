@@ -43,5 +43,3 @@ class _MemoryGameState extends State<MemoryGameUI> {
     );
   }
 }
-
-

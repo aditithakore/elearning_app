@@ -27,35 +27,31 @@ class _FlipAnimationState extends State<FlipAnimation>
   @override
   void initState() {
     super.initState();
-    _controller =
-        AnimationController(duration: Duration(milliseconds: 2600), vsync: this)
-          ..addStatusListener((status) {
-            if (status == AnimationStatus.completed) {
-              widget.animationCompleted.call(0);
-            }
-            if (status == AnimationStatus.dismissed) {
-              print('animation completed reversed');
-              widget.animationCompleted.call(1);
-            }
-          });
+    _controller = AnimationController(
+      duration: Duration(milliseconds: 500),
+      vsync: this,
+    )..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          widget.animationCompleted.call(0);
+        }
+        if (status == AnimationStatus.dismissed) {
+          widget.animationCompleted.call(1);
+        }
+      });
 
-    _animation = Tween<double>(begin: 0.0, end: 1.0).animate(
-        CurvedAnimation(parent: _controller, curve: Curves.bounceInOut));
+    _animation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
   }
 
   @override
   void didUpdateWidget(covariant FlipAnimation oldWidget) {
+    super.didUpdateWidget(oldWidget);
     if (widget.animate != oldWidget.animate) {
       if (widget.animate) {
-        if (widget.reverse) {
-          _controller.reverse();
-        } else {
-          _controller.reset();
-          _controller.forward();
-        }
+        _controller.forward();
+      } else {
+        _controller.reverse();
       }
     }
-    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -69,20 +65,21 @@ class _FlipAnimationState extends State<FlipAnimation>
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) => Transform(
-          alignment: Alignment.center,
-          transform: Matrix4.identity()
-            ..rotateY(_animation.value * pi)
-            ..setEntry(3, 2, 0.005),
-          child: _controller.value >= 0.50
-              ? widget.word
-              : Container(
-                  decoration: BoxDecoration(color: Colors.blueAccent),
-                  child: Icon(
-                    Icons.question_mark,
-                    size: 50,
-                    color: Colors.white,
-                  ),
-                )),
+        alignment: Alignment.center,
+        transform: Matrix4.identity()
+          ..setEntry(3, 2, 0.001)
+          ..rotateY(_animation.value * pi),
+        child: _animation.value < 0.5
+          ? Container(
+              decoration: BoxDecoration(color: Colors.blueAccent),
+              child: Icon(Icons.question_mark, size: 50, color: Colors.white),
+            )
+          : Transform(
+              alignment: Alignment.center,
+              transform: Matrix4.identity()..rotateY(pi),
+              child: widget.word,
+            ),
+      ),
     );
   }
 }

@@ -15,27 +15,23 @@ class GameManager extends ChangeNotifier {
   void tileTapped(int index) {
     if (flippedCards[index] || matchedPairs.contains(index)) return;
 
+    flippedCards[index] = true;
+    notifyListeners();
+
     if (firstFlippedIndex == null) {
-      // First card flipped
       firstFlippedIndex = index;
-      flippedCards[index] = true;
-    } else if (firstFlippedIndex != index) {
-      // Second card flipped
-      flippedCards[index] = true;
+    } else {
       checkMatch(firstFlippedIndex!, index);
     }
-    
-    notifyListeners();
   }
 
   void checkMatch(int index1, int index2) {
     if (gameShapes[index1] == gameShapes[index2]) {
-      // Match found
       matchedPairs.add(index1);
       matchedPairs.add(index2);
       firstFlippedIndex = null;
+      notifyListeners();
     } else {
-      // No match
       Future.delayed(Duration(milliseconds: 1000), () {
         flippedCards[index1] = false;
         flippedCards[index2] = false;
