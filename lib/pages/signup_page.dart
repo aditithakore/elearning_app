@@ -38,24 +38,14 @@ class SignupPage extends StatelessWidget {
                 ),
                 Column(
                   children: <Widget>[
-                    // TextField(
-                    //   decoration: InputDecoration(
-                    //       hintText: "Username",
-                    //       border: OutlineInputBorder(
-                    //           borderRadius: BorderRadius.circular(18),
-                    //           borderSide: BorderSide.none),
-                    //       fillColor: Colors.purple.withOpacity(0.1),
-                    //       filled: true,
-                    //       prefixIcon: const Icon(Icons.person)),
-                    // ),
-                    const SizedBox(height: 20),
+                    
                     TextField(
                       decoration: InputDecoration(
                           hintText: "Email",
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(18),
                               borderSide: BorderSide.none),
-                          fillColor: Colors.purple.withOpacity(0.1),
+                          fillColor: Colors.blue.withOpacity(0.1),
                           filled: true,
                           prefixIcon: const Icon(Icons.email)),
                     ),
@@ -66,7 +56,7 @@ class SignupPage extends StatelessWidget {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(18),
                             borderSide: BorderSide.none),
-                        fillColor: Colors.purple.withOpacity(0.1),
+                        fillColor: Colors.blue.withOpacity(0.1),
                         filled: true,
                         prefixIcon: const Icon(Icons.password),
                       ),
@@ -79,7 +69,7 @@ class SignupPage extends StatelessWidget {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(18),
                             borderSide: BorderSide.none),
-                        fillColor: Colors.purple.withOpacity(0.1),
+                        fillColor: Colors.blue.withOpacity(0.1),
                         filled: true,
                         prefixIcon: const Icon(Icons.password),
                       ),
@@ -99,7 +89,7 @@ class SignupPage extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         shape: const StadiumBorder(),
                         padding: const EdgeInsets.symmetric(vertical: 16),
-                        backgroundColor: Colors.purple,
+                        backgroundColor: Colors.blue,
                       ),
                     )),
               ],

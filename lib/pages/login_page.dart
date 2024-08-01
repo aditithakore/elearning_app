@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:elearning_app/pages/signup_page.dart';
+import 'package:flutter_svg/svg.dart';
+
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -40,10 +44,20 @@ class LoginPageState extends State<LoginPage> {
   }
 
   Widget _header(context) {
-    return const Text(
-      "Welcome!",
-      style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-      textAlign: TextAlign.center,
+    return Column(
+      children: [
+        const Text(
+          "Welcome!",
+          style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 10),
+        SvgPicture.asset(
+          'assets/icons/cat.svg',
+          height: 140,
+          width: 80.0,
+        ),
+      ],
     );
   }
 
@@ -58,7 +72,7 @@ class LoginPageState extends State<LoginPage> {
               borderRadius: BorderRadius.circular(18),
               borderSide: BorderSide.none,
             ),
-            fillColor: Colors.purple.withOpacity(0.1),
+            fillColor: Colors.blue.withOpacity(0.1),
             filled: true,
             prefixIcon: const Icon(Icons.person),
           ),
@@ -71,7 +85,7 @@ class LoginPageState extends State<LoginPage> {
               borderRadius: BorderRadius.circular(18),
               borderSide: BorderSide.none,
             ),
-            fillColor: Colors.purple.withOpacity(0.1),
+            fillColor: Colors.blue.withOpacity(0.1),
             filled: true,
             prefixIcon: const Icon(Icons.password),
           ),
@@ -83,7 +97,7 @@ class LoginPageState extends State<LoginPage> {
           style: ElevatedButton.styleFrom(
             shape: const StadiumBorder(),
             padding: const EdgeInsets.symmetric(vertical: 16),
-            backgroundColor: Colors.purple,
+            backgroundColor: Colors.blue,
           ),
           child: const Text(
             "Login",
@@ -101,7 +115,7 @@ class LoginPageState extends State<LoginPage> {
         onPressed: () {},
         child: const Text(
           "Forgot password?",
-          style: TextStyle(color: Colors.purple),
+          style: TextStyle(color: Colors.blue),
         ),
       ),
     );
@@ -125,7 +139,7 @@ class LoginPageState extends State<LoginPage> {
       height: 55,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25),
-        border: Border.all(color: Colors.purple),
+        border: Border.all(color: Colors.blue),
         boxShadow: [
           BoxShadow(
             color: Colors.white.withOpacity(0.5),
@@ -140,17 +154,17 @@ class LoginPageState extends State<LoginPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // SvgPicture.asset(
-            //   'assets/icons/icons8-google.svg',
-            //   height: 30.0,
-            //   width: 30.0,
-            // ),
+            SvgPicture.asset(
+              'assets/icons/icons8-google.svg',
+              height: 30.0,
+              width: 30.0,
+            ),
             const SizedBox(width: 18),
             const Text(
               "Sign In with Google",
               style: TextStyle(
                 fontSize: 16,
-                color: Colors.purple,
+                color: Colors.blue,
               ),
             ),
           ],
@@ -165,13 +179,19 @@ class LoginPageState extends State<LoginPage> {
       children: [
         const Text("Don't have an account? "),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const SignupPage()),
+          );
+        },
           child: const Text(
             "Sign Up",
-            style: TextStyle(color: Colors.purple),
+            style: TextStyle(color: Colors.blue),
           ),
         ),
       ],
     );
   }
 }
+
