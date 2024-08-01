@@ -70,7 +70,11 @@ class BodyPartsUI extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Image.network(currentBodyPart.imageUrl),
+                  FadeInImage.assetNetwork(
+                    placeholder: 'assets/placeholder.png', // Replace with your placeholder image asset
+                    image: currentBodyPart.imageUrl,
+                    fadeInDuration: Duration(seconds: 1),
+                  ),
                   SizedBox(height: 20),
                 ],
               ),
