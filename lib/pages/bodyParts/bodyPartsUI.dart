@@ -114,6 +114,8 @@ class BodyPartsUI extends StatelessWidget {
             ),
 
             // Speak button
+            //PLEASE JUST WORK ON THIS PART THANKYOU YE MERESE EDIT NAI HORA WELL REMOVE THE BUTTON AND PLACE SMT ELSE CHLEGA
+            //THANKS ANKII <3
             Positioned(
               bottom: width * 0.1,
               left: height * 0 * 0.2,

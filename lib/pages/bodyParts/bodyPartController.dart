@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:elearning_app/common/constant.dart';
 import 'package:elearning_app/pages/bodyParts/bodyPartsModel.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
@@ -20,7 +21,7 @@ class BodyPartController extends GetxController {
 Future<void> fetchBodyParts() async {
   try {
     final response =
-        await http.get(Uri.parse('http://10.0.2.2:3001/bodypart'));
+        await http.get(Uri.parse('${baseurl}bodypart'));
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body);
       print(response.body);
