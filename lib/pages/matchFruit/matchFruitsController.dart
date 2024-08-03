@@ -174,3 +174,4 @@ class MatchFruitsController extends GetxController {
     );
   }
 }
+
