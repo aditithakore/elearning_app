@@ -7,11 +7,17 @@ class UserInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-      backgroundColor: Colors.lightBlue[50],
       body: Center(
         child: SingleChildScrollView(
           child: Container(
+             decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(
+                  'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v1015-111c-kstoqf1a.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=f016449eaa797aebe6ad6b921eaaf502',
+                ),
+                fit: BoxFit.cover,
+              ),
+            ),
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
