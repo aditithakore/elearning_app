@@ -16,8 +16,10 @@ class SocialPage extends StatelessWidget {
               Text(
                 'SOCIAL',
                 textAlign: TextAlign.center,
-                style:
-                    TextStyle(color: Colors.blue,fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 40),
               Icon(Icons.chat_bubble, size: 100, color: Colors.blue),
@@ -30,27 +32,33 @@ class SocialPage extends StatelessWidget {
               Spacer(),
               ElevatedButton(
                 child: Text('Yes'),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CognitivePage()),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.blue, backgroundColor: Colors.white,
-                  side: BorderSide(color: Colors.blue),
+                  foregroundColor: Colors.blue, // Text color
+                  backgroundColor: Colors.white, // Button background color
+                  side: BorderSide(color: Colors.blue), // Border color
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30)),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
                 ),
               ),
               SizedBox(height: 10),
               ElevatedButton(
                 child: Text('No'),
                 onPressed: () {
-                  
-                Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => CognitivePage()),
-                        );
-              
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CognitivePage()),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.blue, backgroundColor: Colors.white,
+                  foregroundColor: Colors.blue,
+                  backgroundColor: Colors.white,
                   side: BorderSide(color: Colors.blue),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30)),
