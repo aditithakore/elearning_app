@@ -1,3 +1,4 @@
+import 'package:elearning_app/screens/speechelevelpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -51,7 +52,10 @@ class ChildTestPage extends StatelessWidget {
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    
+                     Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SpeechLevelPage()),
+                        );
                   },
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
