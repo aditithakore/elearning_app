@@ -4,7 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class AlphabetLearningUI extends StatelessWidget {
-  final AlphabetLearningController controller = Get.put(AlphabetLearningController());
+  final AlphabetLearningController controller =
+      Get.put(AlphabetLearningController());
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,8 @@ class AlphabetLearningUI extends StatelessWidget {
           return Center(child: Text('No alphabets found'));
         }
 
-        final currentAlphabet = controller.alphabets[controller.currentIndex.value];
+        final currentAlphabet =
+            controller.alphabets[controller.currentIndex.value];
 
         return Stack(
           children: [
@@ -39,75 +41,83 @@ class AlphabetLearningUI extends StatelessWidget {
                     fit: BoxFit.cover),
               ),
             ),
-            // Alphabet image
+            // White Board
             Positioned(
               top: width * 0.060,
               left: height * 0.20,
               child: Image.network(
-                currentAlphabet.alphabetUrl,
+                'https://i.imgur.com/z8gDtum.png',
+                // currentAlphabet.alphabetUrl,
                 width: width * 0.79,
                 height: height * 0.79,
                 fit: BoxFit.fitWidth,
               ),
             ),
-            // Word image
+            //imageAlphabet
             Positioned(
-              bottom: width * 0.15,
+              top: height * 0.30,
               left: width * 0.12,
               child: Image.network(
-                currentAlphabet.imageUrl,
-                width: width * 0.45,  // Adjust width as needed
-                height: height * 0.35, // Adjust height as needed
-                fit: BoxFit.contain,
+                currentAlphabet.alphabetUrl,
+                width: width * 0.19,
+                height: height * 0.41,
+                fit: BoxFit.fitWidth,
               ),
             ),
             // Word text
-            Container(
-              alignment: Alignment.center,
-              padding: EdgeInsets.all(height * 0.1),
-              color: const Color.fromARGB(0, 255, 255, 255),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    currentAlphabet.word,
+            Positioned(
+              top: height * 0.45,
+              left: width * 0.40,
+              child: Container(
+                // color: Colors.red,
+                child: Text(currentAlphabet.word,
                     style: TextStyle(
-                      fontSize: 48,
-                      fontFamily: 'Baloo 2',
-                      color: Colors.blue,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
+                        fontSize: 28,
+                        fontFamily: 'Baloo 2',
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold)),
               ),
-            ).marginOnly(left: height * 0.55),
+            ),
+            // Aeroplane Image
+            Positioned(
+              bottom: height * 0.38,
+              right: width * 0.12,
+              child: Image.network(
+                currentAlphabet.imageUrl,
+                width: width * 0.30, // Adjust width as needed
+                height: height * 0.30, // Adjust height as needed
+                fit: BoxFit.contain,
+              ),
+            ),
+
             // Navigation arrows
             controller.alphabets.indexOf(currentAlphabet) != 0
                 ? Positioned(
-              left: height * 0.04,
-              top: width * 0,
-              bottom: width * 0,
-              child: IconButton(
-                icon: Image.asset('assets/icons/leftA.png'),
-                onPressed: controller.previousAlphabet,
-              ),
-            )
+                    left: height * 0.04,
+                    top: width * 0,
+                    bottom: width * 0,
+                    child: IconButton(
+                      icon: Image.asset('assets/icons/leftA.png'),
+                      onPressed: controller.previousAlphabet,
+                    ),
+                  )
                 : SizedBox.shrink(),
-            controller.alphabets.indexOf(currentAlphabet) != controller.alphabets.length - 1
+            controller.alphabets.indexOf(currentAlphabet) !=
+                    controller.alphabets.length - 1
                 ? Positioned(
-              right: height * 0.04,
-              top: width * 0,
-              bottom: width * 0,
-              child: IconButton(
-                icon: Image.asset('assets/icons/rightA.png'),
-                onPressed: controller.nextAlphabet,
-              ),
-            )
+                    right: height * 0.04,
+                    top: width * 0,
+                    bottom: width * 0,
+                    child: IconButton(
+                      icon: Image.asset('assets/icons/rightA.png'),
+                      onPressed: controller.nextAlphabet,
+                    ),
+                  )
                 : SizedBox.shrink(),
             // Speak button
             Positioned(
-              bottom: width * 0.15,
-              left: height * 0.01,
+              bottom: height * 0.23,
+              left: width * 0.01,
               right: 0,
               child: Center(
                 child: ElevatedButton(
