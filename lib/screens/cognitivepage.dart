@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:elearning_app/screens/cognitive2page.dart';
+import 'package:elearning_app/screens/Lastpage.dart';
 
 class CognitivePage extends StatelessWidget {
   const CognitivePage({super.key});
@@ -12,13 +12,14 @@ class CognitivePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              
               SizedBox(height: 10),
               Text(
                 'COGNITIVE',
                 textAlign: TextAlign.center,
-                style:
-                    TextStyle(color: Colors.blue, fontSize: 24,fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 40),
               Icon(Icons.people, size: 100, color: Colors.green),
@@ -31,31 +32,38 @@ class CognitivePage extends StatelessWidget {
               Spacer(),
               ElevatedButton(
                 child: Text('Yes'),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Lastpage()),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.blue, backgroundColor: Colors.white,
+                  foregroundColor: Colors.blue,
+                  backgroundColor: Colors.white,
                   side: BorderSide(color: Colors.blue),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30)),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
                 ),
               ),
               SizedBox(height: 10),
               ElevatedButton(
                 child: Text('No'),
-                onPressed: () {               
-                Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Cognitive2page ()),
-                        );
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Lastpage()),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.blue, backgroundColor: Colors.white,
+                  foregroundColor: Colors.blue,
+                  backgroundColor: Colors.white,
                   side: BorderSide(color: Colors.blue),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30)),
                 ),
               ),
-             
             ],
           ),
         ),
@@ -63,4 +71,3 @@ class CognitivePage extends StatelessWidget {
     );
   }
 }
-
