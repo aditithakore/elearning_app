@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Cognitive2page extends StatelessWidget {
-  const Cognitive2page({super.key});
+class Lastpage extends StatelessWidget {
+  const Lastpage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
