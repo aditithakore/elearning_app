@@ -29,7 +29,7 @@ class UserInfoPage extends StatelessWidget {
                   children: <Widget>[
                     const SizedBox(height: 60.0),
                     const Text(
-                      "Enter Your Details",
+                      "Enter Your Child Details",
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
