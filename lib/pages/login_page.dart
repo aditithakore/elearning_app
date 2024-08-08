@@ -1,3 +1,4 @@
+import 'package:elearning_app/pages/dashboard.dart';
 import 'package:elearning_app/screens/dashboard_screen.dart';
 import 'package:elearning_app/services/authService.dart';
 import 'package:flutter/material.dart';
@@ -240,7 +241,7 @@ class LoginPageState extends State<LoginPage> {
       final response = await _authService.login(email, password);
       // Handle the response, like saving the token or navigating to the next page
       print('Login successful: ${response['token']}');
-      Get.to(() => DashBoardScreen());
+      Get.to(() => Dashboard());
       // Navigate to the next page or save the token locally
     } catch (error) {
       // Show error message

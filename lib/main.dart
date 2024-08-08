@@ -2,6 +2,7 @@
 import 'package:elearning_app/pages/alphabetLearning/alphabetLearningUI.dart';
 import 'package:elearning_app/pages/bodyParts/bodyPartsUI.dart';
 import 'package:elearning_app/pages/colorShapes/colorShapesUI.dart';
+import 'package:elearning_app/pages/dashboard.dart';
 import 'package:elearning_app/pages/guessAnimal/guessAnimalUI.dart';
 import 'package:elearning_app/pages/login_page.dart';
 import 'package:elearning_app/pages/matchFruit/matchFruitsUI.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
 
-      home: AlphabetLearningUI(),
+      home: Dashboard(),
 
 
     );
