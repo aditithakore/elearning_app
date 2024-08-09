@@ -22,7 +22,7 @@ class AlphabetLearningController extends GetxController {
   Future<void> fetchAlphabets() async {
     try {
       isLoading(true);
-      final response = await http.get(Uri.parse('${baseurl}/alphabet'));
+      final response = await http.get(Uri.parse('http://10.0.2.2:3001/alphabet'));
       if (response.statusCode == 200) {
         final Map<String, dynamic> data = json.decode(response.body);
         if (data.containsKey('alphabet') && data['alphabet'] != null) {

@@ -1,8 +1,56 @@
-import 'package:elearning_app/screens/Childtestpage.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'Childtestpage.dart';
 
-class UserInfoPage extends StatelessWidget {
-  const UserInfoPage({super.key});
+class UserInfoPage extends StatefulWidget {
+  final String email;
+  final String password;
+
+  const UserInfoPage({super.key, required this.email, required this.password});
+
+  @override
+  _UserInfoPageState createState() => _UserInfoPageState();
+}
+
+class _UserInfoPageState extends State<UserInfoPage> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _ageController = TextEditingController();
+  String _disability = 'None';
+
+  Future<void> _submitDetails() async {
+    final String name = _nameController.text;
+    final String age = _ageController.text;
+    final String disability = _disability;
+
+    // Send request to the backend
+    final response = await http.post(
+      Uri.parse('http://10.0.2.2:3001/user'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, dynamic>{
+        'email': widget.email,
+        'password': widget.password,
+        'childage': age,
+        'childname': name,
+        'childdisability': disability,
+      }),
+    );
+
+    if (response.statusCode == 201) {
+      // Handle success
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ChildTestPage()),
+      );
+    } else {
+      // Show error if submission fails
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Submission failed')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +86,7 @@ class UserInfoPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     TextField(
+                      controller: _nameController,
                       decoration: InputDecoration(
                         hintText: "Name",
                         border: OutlineInputBorder(
@@ -51,6 +100,7 @@ class UserInfoPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     TextField(
+                      controller: _ageController,
                       decoration: InputDecoration(
                         hintText: "Age",
                         border: OutlineInputBorder(
@@ -65,6 +115,7 @@ class UserInfoPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     DropdownButtonFormField<String>(
+                      value: _disability,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(18),
@@ -72,24 +123,25 @@ class UserInfoPage extends StatelessWidget {
                         ),
                         fillColor: Colors.blue.withOpacity(0.1),
                         filled: true,
-                        prefixIcon: const Icon(Icons.people),
+                        prefixIcon: const Icon(Icons.accessibility),
                       ),
                       items: const [
-                        DropdownMenuItem(value: 'Male', child: Text('Male')),
-                        DropdownMenuItem(value: 'Female', child: Text('Female')),
+                        DropdownMenuItem(value: 'None', child: Text('None')),
+                        DropdownMenuItem(value: 'Visual', child: Text('Visual')),
+                        DropdownMenuItem(value: 'Hearing', child: Text('Hearing')),
+                        DropdownMenuItem(value: 'Motor', child: Text('Motor')),
                         DropdownMenuItem(value: 'Other', child: Text('Other')),
                       ],
-                      onChanged: (String? newValue) {},
-                      hint: const Text('Select Gender'),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          _disability = newValue!;
+                        });
+                      },
+                      hint: const Text('Select Disability'),
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ChildTestPage()),
-                        );
-                      },
+                      onPressed: _submitDetails,
                       child: const Text(
                         "Submit",
                         style: TextStyle(fontSize: 20, color: Colors.white),
