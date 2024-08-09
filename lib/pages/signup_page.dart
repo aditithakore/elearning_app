@@ -1,16 +1,42 @@
-import 'package:elearning_app/screens/userinfo.dart';
 import 'package:flutter/material.dart';
-
+import 'package:elearning_app/screens/userinfo.dart';
 
 class SignupPage extends StatelessWidget {
   const SignupPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController _emailController = TextEditingController();
+    final TextEditingController _passwordController = TextEditingController();
+    final TextEditingController _confirmPasswordController = TextEditingController();
+
+    Future<void> _registerUser() async {
+      final String email = _emailController.text;
+      final String password = _passwordController.text;
+      final String confirmPassword = _confirmPasswordController.text;
+
+      if (password != confirmPassword) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Passwords do not match')),
+        );
+        return;
+      }
+
+      // Navigate to UserInfoPage with email and password
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => UserInfoPage(
+            email: email,
+            password: password,
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       body: Stack(
         children: [
-          // Background image
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -40,35 +66,37 @@ class SignupPage extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       Text(
                         "Create your account",
-                        style:
-                            TextStyle(fontSize: 15, color: Colors.grey[700]),
-                      )
+                        style: TextStyle(fontSize: 15, color: Colors.grey[700]),
+                      ),
                     ],
                   ),
                   Column(
                     children: <Widget>[
                       TextField(
+                        controller: _emailController,
                         decoration: InputDecoration(
-                            hintText: "Email",
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(18),
-                                borderSide: BorderSide.none),
-                            fillColor: Colors.blue.withOpacity(0.1),
-                            filled: true,
-                            prefixIcon: const Icon(Icons.email)),
+                          hintText: "Email",
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(18),
+                            borderSide: BorderSide.none,
+                          ),
+                          fillColor: Colors.blue.withOpacity(0.1),
+                          filled: true,
+                          prefixIcon: const Icon(Icons.email),
+                        ),
                       ),
                       const SizedBox(height: 20),
                       TextField(
+                        controller: _passwordController,
                         decoration: InputDecoration(
                           hintText: "Password",
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(18),
-                              borderSide: BorderSide.none),
+                            borderRadius: BorderRadius.circular(18),
+                            borderSide: BorderSide.none,
+                          ),
                           fillColor: Colors.blue.withOpacity(0.1),
                           filled: true,
                           prefixIcon: const Icon(Icons.password),
@@ -77,11 +105,13 @@ class SignupPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 20),
                       TextField(
+                        controller: _confirmPasswordController,
                         decoration: InputDecoration(
                           hintText: "Confirm Password",
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(18),
-                              borderSide: BorderSide.none),
+                            borderRadius: BorderRadius.circular(18),
+                            borderSide: BorderSide.none,
+                          ),
                           fillColor: Colors.blue.withOpacity(0.1),
                           filled: true,
                           prefixIcon: const Icon(Icons.password),
@@ -93,13 +123,7 @@ class SignupPage extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.only(top: 3, left: 3),
                     child: ElevatedButton(
-                      onPressed: () {
-                        // Navigate to ChildTestPage
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => UserInfoPage()),
-                        );
-                      },
+                      onPressed: _registerUser,
                       child: const Text(
                         "Sign up",
                         style: TextStyle(fontSize: 20, color: Colors.white),
