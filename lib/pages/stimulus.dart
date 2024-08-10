@@ -1,14 +1,18 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:elearning_app/pages/literacy.dart';
-import 'package:elearning_app/pages/numeracy.dart';
-import 'package:elearning_app/pages/socialskills.dart';
-import 'package:elearning_app/pages/stimulus.dart';
+import 'package:elearning_app/pages/alphabetLearning/alphabetLearningUI.dart';
+import 'package:elearning_app/pages/bodyParts/bodyPartsUI.dart';
+import 'package:elearning_app/pages/colorShapes/colorShapesUI.dart';
+import 'package:elearning_app/pages/colorsLearning/colorLearningUI.dart';
+import 'package:elearning_app/pages/matchFruit/matchFruitsUI.dart';
+import 'package:elearning_app/pages/memoryGame/memoryGameUI.dart';
+import 'package:elearning_app/pages/numberLearning/numberLearningUI.dart';
+import 'package:elearning_app/pages/shapeLearning/shapeLearningUI.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-class Dashboard extends StatelessWidget {
+class Stimulus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -21,13 +25,13 @@ class Dashboard extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Dashboard',
-        style: TextStyle(
-                      fontSize: 32,
-                      fontFamily: 'Baloo 2',
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
+          'Stimulus Training Module',
+          style: TextStyle(
+            fontSize: 32,
+            fontFamily: 'Baloo 2',
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
@@ -100,45 +104,34 @@ class Dashboard extends StatelessWidget {
                   SizedBox(width: 16.0),
                   _buildModule(
                     context: context,
-                    title: 'Literacy Module',
-                    icon: AssetImage('assets/icons/literacy.png'),
+                    title: 'Breathing Exercise',
+                    icon: AssetImage('assets/icons/breathing.png'),
                     color: Colors.blue,
-                    onTap: (){
-                      Get.to(() => Literacy());
+                    onTap: () {
+                      Get.to(() => NumberLearningUI());
                     },
                   ),
                   SizedBox(width: 16.0),
                   _buildModule(
                     context: context,
-                    title: 'Numeracy Module',
-                    icon: AssetImage('assets/icons/numeracy.png'),
+                    title: 'Art Therapy',
+                    icon: AssetImage('assets/icons/drawing.png'),
+                    color: Colors.blue,
+                    onTap: () {
+                      Get.to(() => ColorLearningUI());
+                    },
+                  ),
+                  SizedBox(width: 16.0),
+                  _buildModule(
+                    context: context,
+                    title: 'Sensory Bin',
+                    icon: AssetImage('assets/icons/sensory.png'),
                     color: Colors.green,
-                    onTap: (){
-                      Get.to(() => Numeracy());
+                    onTap: () {
+                      Get.to(() => ShapeLearningUI());
                     },
                   ),
-                  SizedBox(width: 16.0),
-                  _buildModule(
-                    context: context,
-                    title: 'Social Skill Module',
-                    icon: AssetImage('assets/icons/social.png'),
-                    color: Colors.orange,
-                    onTap: (){
-                      Get.to(() => SocialSkills());
-                    },
-                  ),
-                  SizedBox(width: 16.0),
-                  _buildModule(
-                    context: context,
-                    title: 'Stimuli Training',
-                    icon: AssetImage('assets/icons/stimuli.png'),
-                    color: Colors.orange,
-                    onTap: (){
-                      Get.to(() => Stimulus());
-                    },
-                  ),
-                  // Add more modules here if needed
-                ],
+                                ],
               ),
             ).marginOnly(left: 0.0, top: width * 0.03, right: 0.0, bottom: 0.0),
           ),

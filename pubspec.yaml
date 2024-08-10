@@ -38,6 +38,7 @@ dependencies:
   flutter_painter_v2: ^2.0.1
   flutter_drawing_board: ^0.8.1
   flutter_colorpicker: ^1.1.0
+  lottie: ^3.1.2
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -70,11 +71,13 @@ flutter:
 
   # To add assets to your application, add an assets section, like this
   assets:
+    - assets/animation/
     - assets/images/
     - assets/images/fruits/
     - assets/images/animals/
     - assets/images/social/
     - assets/icons/
+    - assets/icons/onboard/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
