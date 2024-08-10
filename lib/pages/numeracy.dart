@@ -135,7 +135,7 @@ class Numeracy extends StatelessWidget {
                   _buildModule(
                     context: context,
                     title: 'Color Shapes',
-                    icon: AssetImage('assets/icons/guessanimal.png'),
+                    icon: AssetImage('assets/icons/guesscolor.png'),
                     color: Colors.orange,
                     onTap: () {
                       Get.to(() => ColorShapesUI());
