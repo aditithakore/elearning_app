@@ -22,7 +22,8 @@ class _UserInfoPageState extends State<UserInfoPage> {
     final String name = _nameController.text;
     final String age = _ageController.text;
     final String disability = _disability;
-
+    
+    print('Submitting: Email: ${widget.email}, Password: ${widget.password}, Name: $name, Age: $age, Disability: $disability');
     // Send request to the backend
     final response = await http.post(
       Uri.parse('http://10.0.2.2:3001/user'),

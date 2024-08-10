@@ -1,3 +1,4 @@
+import 'package:elearning_app/pages/dashboard.dart';
 import 'package:elearning_app/screens/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 // import 'package:elearning_app/screens/Lastpage.dart';
@@ -54,7 +55,7 @@ class CognitivePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DashBoardScreen()),
+                    MaterialPageRoute(builder: (context) => Dashboard()),
                   );
                 },
                 style: ElevatedButton.styleFrom(

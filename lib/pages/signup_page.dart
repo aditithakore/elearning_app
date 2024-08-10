@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:elearning_app/screens/userinfo.dart';
 
-class SignupPage extends StatelessWidget {
+class SignupPage extends  StatefulWidget {
   const SignupPage({super.key});
+ @override
+  _SignupPageState createState() => _SignupPageState();
+  }
 
-  @override
-  Widget build(BuildContext context) {
+  class _SignupPageState extends State<SignupPage> {
     final TextEditingController _emailController = TextEditingController();
     final TextEditingController _passwordController = TextEditingController();
     final TextEditingController _confirmPasswordController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+
 
     Future<void> _registerUser() async {
       final String email = _emailController.text;
@@ -143,4 +148,6 @@ class SignupPage extends StatelessWidget {
       ),
     );
   }
+  
+
 }
