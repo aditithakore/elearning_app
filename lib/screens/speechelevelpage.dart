@@ -21,6 +21,7 @@ class _SpeechLevelPageState extends State<SpeechLevelPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue.shade50,
       appBar: AppBar(
         title: Text('PRELIMINARY', style: TextStyle(color: Colors.blue)),
         backgroundColor: Colors.white,

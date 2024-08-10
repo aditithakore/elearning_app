@@ -7,6 +7,7 @@ class CognitivePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue.shade50,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),

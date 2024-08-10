@@ -6,6 +6,7 @@ class SocialPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue.shade50,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -13,6 +14,7 @@ class SocialPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SizedBox(height: 10),
+              
               Text(
                 'SOCIAL',
                 textAlign: TextAlign.center,
