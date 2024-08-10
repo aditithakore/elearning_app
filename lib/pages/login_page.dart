@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:elearning_app/pages/signup_page.dart';
 import 'package:get/get.dart';
+import 'package:flutter_svg/svg.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
