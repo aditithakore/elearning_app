@@ -16,6 +16,7 @@ import 'package:elearning_app/pages/matchFruit/matchFruitsUI.dart';
 import 'package:elearning_app/pages/numberLearning/numberLearningUI.dart';
 import 'package:elearning_app/pages/numeracy.dart';
 import 'package:elearning_app/pages/rotatesplash.dart';
+import 'package:elearning_app/pages/sensorybin.dart';
 import 'package:elearning_app/pages/signup_page.dart';
 import 'package:elearning_app/screens/Childtestpage.dart';
 import 'package:elearning_app/screens/Lastpage.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginPage(),
+      home: SensoryBinPage(),
     );
   }
 }
