@@ -16,20 +16,20 @@ class SocialSkillsController extends GetxController {
   ].obs;
 
   RxMap<String, List<String>> dialogues = {
-    "s1c1d1": ["Hi, my name is John. What's your name"],
-    "s1c2d1": ["Hello, nice to meet you! I'm Tom."],
-    "s1c1d2": ["It's my first day here. How about you"],
-    "s1c2d2": ["Yes, me too! Let's be friends!"],
+    "s1c1d1": ["Hi, my name is John.\n What's your name"],
+    "s1c2d1": ["Hello, nice to meet you!\n I'm Tom."],
+    "s1c1d2": ["It's my first day here.\n How about you"],
+    "s1c2d2": ["Yes, me too! \n Let's be friends!"],
 
-    "s2c1d1": ["Yes, you have to pay 150 Rupees"],
-    "s2c2d1": ["Hello, Can I get 1 Kg Apples?"],
-    "s2c1d2": ["Yes sure, here it is"],
-    "s2c2d2": ["I have 200 Rupees, can I get 50 rupees back"],
+    "s2c1d1": ["Hi there! What would you like to purchase?"],
+    "s2c2d1": ["Hi, Could I get 1 kg of apples? \nWhat's the price?"],
+    "s2c1d2": ["Sure, the price is 150 Rupees."],
+    "s2c2d2": ["Here's 200 Rupees, and I'll need 50 Rupees back. \nThank you for the apples!"],
 
-    "s3c1d1": [" Miss, can I ask a question about the homework?"],
+    "s3c1d1": [" Miss, can I ask a question \n about the homework?"],
     "s3c2d1": ["Of course! What do you need help with?"],
-    "s3c1d2": ["I'm not able to understanding the math problems"],
-    "s3c2d2": ["Okay,Let me explain it to you."],
+    "s3c1d2": ["I'm not able to understand \n some math problems"],
+    "s3c2d2": ["Okay, Let me explain it to you."],
   }.obs;
 
   RxString scenario = '1'.obs; // Reactive string for scenario
@@ -75,7 +75,7 @@ class SocialSkillsController extends GetxController {
           builder: (BuildContext context) {
             return AlertDialog(
               title: Text('Good Going!!'),
-              content: Text('Now take a deep breath.\n Let\'s practice it once.\n Ask your parent/ guardian to play a role of other child and have a polite conversation.\n\n Once yo are done click on next for New Scenario:)'),
+              content: Text('Try it with your Parent/ Guardian.\n Click on next for new Scenario:)'),
               // Customize your message
               actions: <Widget>[
                 TextButton(
@@ -111,14 +111,15 @@ class SocialSkillsController extends GetxController {
           context:Get.context!, // Use the context from your widget
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Text('Alert'),
-              content: Text('Your message here'), // Customize your message
+              title: Text('Good Going!!'),
+              content: Text('Try it with your Parent/ Guardian.\n Click on next for new Scenario:)'),
+              // Customize your message
               actions: <Widget>[
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop(); // Close the dialog
                   },
-                  child: Text('OK'),
+                  child: Text('Next'),
                 ),
               ],
             );
