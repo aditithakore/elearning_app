@@ -73,6 +73,7 @@ flutter:
     - assets/images/
     - assets/images/fruits/
     - assets/images/animals/
+    - assets/images/social/
     - assets/icons/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
