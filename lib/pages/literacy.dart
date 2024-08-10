@@ -2,6 +2,8 @@
 
 import 'package:elearning_app/pages/alphabetLearning/alphabetLearningUI.dart';
 import 'package:elearning_app/pages/bodyParts/bodyPartsUI.dart';
+import 'package:elearning_app/pages/guessAnimal/guessAnimalUI.dart';
+import 'package:elearning_app/pages/matchFruit/matchFruitsUI.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -122,7 +124,7 @@ class Literacy extends StatelessWidget {
                     icon: AssetImage('assets/icons/guessanimal.png'),
                     color: Colors.orange,
                     onTap: () {
-                      Get.to(() => ());
+                      Get.to(() => GuessAnimalUI());
                     },
                   ),
                   SizedBox(width: 16.0),
@@ -132,7 +134,7 @@ class Literacy extends StatelessWidget {
                     icon: AssetImage('assets/icons/matchfruit.png'),
                     color: Colors.orange,
                     onTap: () {
-                      Get.to(() => Literacy());
+                      Get.to(() => MatchFruitsUI());
                     },
                   ),
                   // Add more modules here if needed

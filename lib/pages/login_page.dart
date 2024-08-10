@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:elearning_app/pages/dashboard.dart';
+import 'package:elearning_app/pages/rotatesplash.dart';
 import 'package:elearning_app/screens/dashboard_screen.dart';
 import 'package:elearning_app/services/authService.dart';
 import 'package:flutter/material.dart';
@@ -24,10 +25,10 @@ class LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-        SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
+    //     SystemChrome.setPreferredOrientations([
+    //   DeviceOrientation.portraitUp,
+    //   DeviceOrientation.portraitDown,
+    // ]);
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -250,7 +251,11 @@ class LoginPageState extends State<LoginPage> {
       final response = await _authService.login(email, password);
       // Handle the response, like saving the token or navigating to the next page
       print('Login successful: ${response['token']}');
-      Get.to(() => Dashboard());
+      Get.to(() => const Rotatesplash());
+
+      await Future.delayed(const Duration(seconds: 3));
+
+      Get.off(() => Dashboard());
       // Navigate to the next page or save the token locally
     } catch (error) {
       // Show error message
