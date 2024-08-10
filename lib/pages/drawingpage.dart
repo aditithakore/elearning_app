@@ -2,17 +2,17 @@
 // import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 // import 'package:flutter_painter_v2/flutter_painter.dart';
 // import 'package:flutter_drawing_board/flutter_drawing_board.dart';
-
+//
 // class DrawingPage extends StatefulWidget {
 //   @override
 //   _DrawingPageState createState() => _DrawingPageState();
 // }
-
+//
 // class _DrawingPageState extends State<DrawingPage> {
 //   Color _brushColor = Colors.black;
 //   double _brushSize = 5.0;
 //   final DrawingBoardController _controller = DrawingBoardController();
-
+//
 //   @override
 //   Widget build(BuildContext context) {
 //     return Scaffold(
@@ -42,7 +42,7 @@
 //       ),
 //     );
 //   }
-
+//
 //   Widget _buildBrushControls() {
 //     return Container(
 //       padding: EdgeInsets.all(8.0),
@@ -66,7 +66,7 @@
 //       ),
 //     );
 //   }
-
+//
 //   void _showBrushSizeDialog() {
 //     showDialog(
 //       context: context,
@@ -98,7 +98,7 @@
 //       },
 //     );
 //   }
-
+//
 //   void _showColorPickerDialog() {
 //     showDialog(
 //       context: context,

@@ -48,35 +48,48 @@ class SocialSkillsUI extends StatelessWidget {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(imagePath, height: 100),
-                    SizedBox(height: 10),
-
-
-                    Container(
-                      padding: EdgeInsets.all(12.0), // Add some padding inside the container
-                      decoration: BoxDecoration(
-                        color: Color(0xFFE0F7FA), // Background color
-                        borderRadius: BorderRadius.circular(15.0), // Rounded corners
-                      ),
-                      child: Text(
-                        dialogue1,
-                        style: TextStyle(fontSize: 16),
-                        textAlign: TextAlign.center,
-                      ),
+                    Row(
+                      children: [
+                        Image.asset(imagePath, height: 150),
+                        Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(12.0), // Add some padding inside the container
+                              decoration: BoxDecoration(
+                                color: Color(0xFFE0F7FA), // Background color
+                                borderRadius: BorderRadius.circular(15.0), // Rounded corners
+                              ),
+                              child: Text(
+                                dialogue1,
+                                style: TextStyle(fontSize: 10),
+                                textAlign: TextAlign.center,
+                              ),
+                            ), //c1dialog1
+                          ],
+                        )
+                      ],
                     ),
-                    SizedBox(height: 20,),
-                    Container(
-                      padding: EdgeInsets.all(12.0), // Add some padding inside the container
-                      decoration: BoxDecoration(
-                        color: Color(0xFFE0F7FA), // Background color
-                        borderRadius: BorderRadius.circular(15.0), // Rounded corners
-                      ),
-                      child: Text(
-                        dialogue2,
-                        style: TextStyle(fontSize: 16),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
+                    Row(
+                      children: [
+                        Image.asset(imagePath, height: 150),
+                        Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(12.0), // Add some padding inside the container
+                              decoration: BoxDecoration(
+                                color: Color(0xFFE0F7FA), // Background color
+                                borderRadius: BorderRadius.circular(15.0), // Rounded corners
+                              ),
+                              child: Text(
+                                dialogue2,
+                                style: TextStyle(fontSize: 10),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),//c1dialog2
+                          ],
+                        )
+                      ],
+                    )
                   ],
                 );
               }),
@@ -102,42 +115,58 @@ class SocialSkillsUI extends StatelessWidget {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(imagePath, height: 100),
-                    SizedBox(height: 10),
-                    Container(
-                      padding: EdgeInsets.all(12.0), // Add some padding inside the container
-                      decoration: BoxDecoration(
-                        color: Color(0xFFE0F7FA), // Background color
-                        borderRadius: BorderRadius.circular(15.0), // Rounded corners
-                      ),
-                      child: Text(
-                        dialogue1,
-                        style: TextStyle(fontSize: 16),
-                        textAlign: TextAlign.center,
-                      ),
+                    Row(
+                      children: [
+                        Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(12.0), // Add some padding inside the container
+                              decoration: BoxDecoration(
+                                color: Color(0xFFE0F7FA), // Background color
+                                borderRadius: BorderRadius.circular(15.0), // Rounded corners
+                              ),
+                              child: Text(
+                                dialogue1,
+                                style: TextStyle(fontSize: 10),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),//c2dialog1
+                          ],
+                        ),//c2dialog1
+                        Image.asset(imagePath, height: 150),
+                      ],
                     ),
-                    Container(
-                      padding: EdgeInsets.all(12.0), // Add some padding inside the container
-                      decoration: BoxDecoration(
-                        color: Color(0xFFE0F7FA), // Background color
-                        borderRadius: BorderRadius.circular(15.0), // Rounded corners
-                      ),
-                      child: Text(
-                        dialogue2,
-                        style: TextStyle(fontSize: 16),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
+                    Row(
+                      children: [
+                        Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(12.0), // Add some padding inside the container
+                              decoration: BoxDecoration(
+                                color: Color(0xFFE0F7FA), // Background color
+                                borderRadius: BorderRadius.circular(15.0), // Rounded corners
+                              ),
+                              child: Text(
+                                dialogue2,
+                                style: TextStyle(fontSize: 10),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ],
+                        ),//c2dialog1
+                        Image.asset(imagePath, height: 150),
+                      ],
+                    )
                   ],
                 );
               }),
-              ElevatedButton(
-                onPressed: () {
-                  controller.reset();
-                  controller.speak(controller.scenario.value, controller.child.value, controller.dialog.value);
-                },
-                child: Text('Reset'),
-              ),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     controller.reset();
+              //     controller.speak(controller.scenario.value, controller.child.value, controller.dialog.value);
+              //   },
+              //   child: Text('Reset'),
+              // ),
             ],
           ),
         ),
