@@ -1,15 +1,13 @@
 import 'dart:convert';
-
-
 import 'package:elearning_app/common/constant.dart';
-import 'package:elearning_app/pages/bodyParts/bodyPartsModel.dart';
+import 'package:elearning_app/pages/numberLearning/numberLearningModel.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
-class BodyPartController extends GetxController {
+class NumberLearningController extends GetxController {
   final FlutterTts flutterTts = FlutterTts();
-  RxList<BodyPart> bodyParts = <BodyPart>[].obs;
+  RxList<Number> numbers = <Number>[].obs;
   RxInt currentIndex = 0.obs;
 
   @override
@@ -21,30 +19,30 @@ class BodyPartController extends GetxController {
 Future<void> fetchBodyParts() async {
   try {
     final response =
-        await http.get(Uri.parse('http://10.0.2.2:3001/bodypart'));
+        await http.get(Uri.parse('http://10.0.2.2:3001/number'));
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body);
       print(response.body);
       // Access the list from the key in the response
-      bodyParts.value = (data['bodyParts'] as List<dynamic>)
-          .map((json) => BodyPart.fromJson(json))
+      numbers.value = (data['numbers'] as List<dynamic>)
+          .map((json) => Number.fromJson(json))
           .toList();
     } else {
-      throw Exception('Failed to load body parts');
+      throw Exception('Failed to load numbers');
     }
   } catch (e) {
-    print('Error fetching body parts: $e');
+    print('Error fetching numbers: $e');
   }
 }
 
 
-  void nextBodyPart() {
-    if (currentIndex < bodyParts.length - 1) {
+  void nextNumber() {
+    if (currentIndex < numbers.length - 1) {
       currentIndex++;
     }
   }
 
-  void previousBodyPart() {
+  void previousNumber() {
     if (currentIndex > 0) {
       currentIndex--;
     }

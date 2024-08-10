@@ -1,9 +1,15 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:elearning_app/pages/dashboard.dart';
+import 'package:elearning_app/pages/rotatesplash.dart';
 import 'package:elearning_app/screens/dashboard_screen.dart';
 import 'package:elearning_app/services/authService.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:elearning_app/pages/signup_page.dart';
 import 'package:get/get.dart';
+import 'package:flutter_svg/svg.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -19,6 +25,11 @@ class LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    //     SystemChrome.setPreferredOrientations([
+    //   DeviceOrientation.portraitUp,
+    //   DeviceOrientation.portraitDown,
+    // ]);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -58,6 +69,8 @@ class LoginPageState extends State<LoginPage> {
   }
 
   Widget _header(context) {
+            final width = MediaQuery.sizeOf(context).width;
+    final height = MediaQuery.sizeOf(context).height;
     return Column(
       children: [
         const Text(
@@ -66,10 +79,8 @@ class LoginPageState extends State<LoginPage> {
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 10),
-        SvgPicture.asset(
-          'assets/icons/cat.svg',
-          height: 140,
-          width: 80.0,
+        Image.asset('assets/icons/login.png',
+        height: height* 0.25,
         ),
       ],
     );
@@ -240,7 +251,11 @@ class LoginPageState extends State<LoginPage> {
       final response = await _authService.login(email, password);
       // Handle the response, like saving the token or navigating to the next page
       print('Login successful: ${response['token']}');
-      Get.to(() => DashBoardScreen());
+      Get.to(() => const Rotatesplash());
+
+      await Future.delayed(const Duration(seconds: 3));
+
+      Get.off(() => Dashboard());
       // Navigate to the next page or save the token locally
     } catch (error) {
       // Show error message
