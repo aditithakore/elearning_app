@@ -13,6 +13,7 @@ import 'package:elearning_app/screens/Childtestpage.dart';
 import 'package:elearning_app/screens/Lastpage.dart';
 import 'package:elearning_app/screens/cognitivepage.dart';
 import 'package:elearning_app/screens/dashboard_screen.dart';
+import 'package:elearning_app/screens/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SignupPage(),
+      home: OnboardingScreen(),
     );
   }
 }
