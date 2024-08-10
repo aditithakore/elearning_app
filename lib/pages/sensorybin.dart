@@ -11,6 +11,10 @@ class _SensoryBinPageState extends State<SensoryBinPage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
     return Scaffold(
       // appBar: AppBar(
       //   title: Text('Virtual Sensory Bin'),
@@ -21,7 +25,11 @@ class _SensoryBinPageState extends State<SensoryBinPage> {
             child: Container(
               color: Colors.brown[300],
               child: Center(
-                child: Text('Dig into the virtual sand!'),
+                child: Text('Dig into the virtual sand!', style: TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey[800],
+            ),),
               ),
             ),
           ),

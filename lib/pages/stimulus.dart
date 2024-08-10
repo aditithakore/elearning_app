@@ -2,11 +2,14 @@
 
 import 'package:elearning_app/pages/alphabetLearning/alphabetLearningUI.dart';
 import 'package:elearning_app/pages/bodyParts/bodyPartsUI.dart';
+import 'package:elearning_app/pages/breathing.dart';
 import 'package:elearning_app/pages/colorShapes/colorShapesUI.dart';
 import 'package:elearning_app/pages/colorsLearning/colorLearningUI.dart';
+import 'package:elearning_app/pages/drawingpage.dart';
 import 'package:elearning_app/pages/matchFruit/matchFruitsUI.dart';
 import 'package:elearning_app/pages/memoryGame/memoryGameUI.dart';
 import 'package:elearning_app/pages/numberLearning/numberLearningUI.dart';
+import 'package:elearning_app/pages/sensorybin.dart';
 import 'package:elearning_app/pages/shapeLearning/shapeLearningUI.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -108,7 +111,7 @@ class Stimulus extends StatelessWidget {
                     icon: AssetImage('assets/icons/breathing.png'),
                     color: Colors.blue,
                     onTap: () {
-                      Get.to(() => NumberLearningUI());
+                      Get.to(() => Breathing());
                     },
                   ),
                   SizedBox(width: 16.0),
@@ -118,7 +121,7 @@ class Stimulus extends StatelessWidget {
                     icon: AssetImage('assets/icons/drawing.png'),
                     color: Colors.blue,
                     onTap: () {
-                      Get.to(() => ColorLearningUI());
+                      Get.to(() => DrawingPage());
                     },
                   ),
                   SizedBox(width: 16.0),
@@ -128,7 +131,7 @@ class Stimulus extends StatelessWidget {
                     icon: AssetImage('assets/icons/sensory.png'),
                     color: Colors.green,
                     onTap: () {
-                      Get.to(() => ShapeLearningUI());
+                      Get.to(() => SensoryBinPage());
                     },
                   ),
                                 ],
