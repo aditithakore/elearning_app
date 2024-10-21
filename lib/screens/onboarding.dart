@@ -24,7 +24,7 @@ class OnboardingScreen extends StatelessWidget {
               const SizedBox(height: 20),
 
               const Text(
-                'Welcome to our e-Learning App',
+                'Welcome to our E-Learning App',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,

@@ -17,13 +17,51 @@ class _UserInfoPageState extends State<UserInfoPage> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
   String _disability = 'None';
+  Future<void> _showInstructionsDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // User must tap button to close dialog
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Instructions'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(
+                    'Here are some instructions on how to use the application:'),
+                SizedBox(height: 10),
+                Text(
+                    '1. Some modules might need Parent/Guardian to be with the child.'),
+                Text('2. Let the child learn at his/her pace.'),
+                Text(
+                    '3. Try to reduce the distractions in the surrounding when using the application so the child can focus.'),
+                Text('4. The Speak button or speaker emoji can be used to read the text out loud.'),
+                Text('5. The Stimulus training module is there to make the kid feel less overhwelmed.'),
+                // Add more instructions as needed
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Okay'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _submitDetails();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   Future<void> _submitDetails() async {
     final String name = _nameController.text;
     final String age = _ageController.text;
     final String disability = _disability;
-    
-    print('Submitting: Email: ${widget.email}, Password: ${widget.password}, Name: $name, Age: $age, Disability: $disability');
+
+    print(
+        'Submitting: Email: ${widget.email}, Password: ${widget.password}, Name: $name, Age: $age, Disability: $disability');
     // Send request to the backend
     final response = await http.post(
       Uri.parse('http://10.0.2.2:3001/user'),
@@ -51,6 +89,10 @@ class _UserInfoPageState extends State<UserInfoPage> {
         SnackBar(content: Text('Submission failed')),
       );
     }
+  }
+
+  Future<void> _submitDetailsOnclick() async {
+    await _showInstructionsDialog();
   }
 
   @override
@@ -128,8 +170,10 @@ class _UserInfoPageState extends State<UserInfoPage> {
                       ),
                       items: const [
                         DropdownMenuItem(value: 'None', child: Text('None')),
-                        DropdownMenuItem(value: 'Visual', child: Text('Visual')),
-                        DropdownMenuItem(value: 'Hearing', child: Text('Hearing')),
+                        DropdownMenuItem(
+                            value: 'Visual', child: Text('Visual')),
+                        DropdownMenuItem(
+                            value: 'Hearing', child: Text('Hearing')),
                         DropdownMenuItem(value: 'Motor', child: Text('Motor')),
                         DropdownMenuItem(value: 'Other', child: Text('Other')),
                       ],
@@ -142,7 +186,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton(
-                      onPressed: _submitDetails,
+                      onPressed: _submitDetailsOnclick,
                       child: const Text(
                         "Submit",
                         style: TextStyle(fontSize: 20, color: Colors.white),

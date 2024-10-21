@@ -14,7 +14,7 @@ class AlphabetLearningController extends GetxController {
   RxString error = ''.obs;
 
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
     fetchAlphabets();
   }
@@ -22,7 +22,8 @@ class AlphabetLearningController extends GetxController {
   Future<void> fetchAlphabets() async {
     try {
       isLoading(true);
-      final response = await http.get(Uri.parse('http://10.0.2.2:3001/alphabet'));
+      final response =
+          await http.get(Uri.parse('http://10.0.2.2:3001/alphabet'));
       if (response.statusCode == 200) {
         final Map<String, dynamic> data = json.decode(response.body);
         if (data.containsKey('alphabet') && data['alphabet'] != null) {
@@ -57,6 +58,7 @@ class AlphabetLearningController extends GetxController {
   }
 
   Future<void> speak(String text) async {
+    print("text");
     await flutterTts.setLanguage("en-US");
     await flutterTts.setPitch(1.0);
     await flutterTts.speak(text);
