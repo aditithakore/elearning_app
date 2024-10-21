@@ -1,10 +1,43 @@
+import 'package:elearning_app/pages/rotatesplash.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:elearning_app/pages/dashboard.dart';
 import 'package:elearning_app/screens/dashboard_screen.dart';
-import 'package:flutter/material.dart';
-// import 'package:elearning_app/screens/Lastpage.dart';
+
 
 class CognitivePage extends StatelessWidget {
   const CognitivePage({super.key});
+
+  Future<void> _showThankYouDialog(BuildContext context) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Thank You'),
+          content: Text('Thank you for your response!'),
+          actions: <Widget>[
+            TextButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _navigateWithSplash(Widget destination) async {
+    await _showThankYouDialog(Get.context!);
+    Get.to(() => const Rotatesplash());
+    
+    await Future.delayed(const Duration(seconds: 3));
+    
+    Get.off(() => destination);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,12 +67,7 @@ class CognitivePage extends StatelessWidget {
               Spacer(),
               ElevatedButton(
                 child: Text('Yes'),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => DashBoardScreen()),
-                  );
-                },
+                onPressed: () => _navigateWithSplash(Dashboard()),
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.blue,
                   backgroundColor: Colors.white,
@@ -52,12 +80,7 @@ class CognitivePage extends StatelessWidget {
               SizedBox(height: 10),
               ElevatedButton(
                 child: Text('No'),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Dashboard()),
-                  );
-                },
+                onPressed: () => _navigateWithSplash(Dashboard()),
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.blue,
                   backgroundColor: Colors.white,
