@@ -1,16 +1,20 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:elearning_app/pages/dashboard_controller.dart';
 import 'package:elearning_app/pages/literacy.dart';
 import 'package:elearning_app/pages/numeracy.dart';
 import 'package:elearning_app/pages/socialskills.dart';
 import 'package:elearning_app/pages/stimulus.dart';
+import 'package:elearning_app/services/userService.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class Dashboard extends StatelessWidget {
+  const Dashboard({super.key});
   @override
   Widget build(BuildContext context) {
+    final userService = Get.put(() => DashboardController());
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
@@ -22,12 +26,12 @@ class Dashboard extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Dashboard',
-        style: TextStyle(
-                      fontSize: 32,
-                      fontFamily: 'Baloo 2',
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
+          style: TextStyle(
+            fontSize: 32,
+            fontFamily: 'Baloo 2',
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
@@ -103,7 +107,7 @@ class Dashboard extends StatelessWidget {
                     title: 'Literacy Module',
                     icon: AssetImage('assets/icons/literacy.png'),
                     color: Colors.blue,
-                    onTap: (){
+                    onTap: () {
                       Get.to(() => Literacy());
                     },
                   ),
@@ -113,7 +117,7 @@ class Dashboard extends StatelessWidget {
                     title: 'Numeracy Module',
                     icon: AssetImage('assets/icons/numeracy.png'),
                     color: Colors.green,
-                    onTap: (){
+                    onTap: () {
                       Get.to(() => Numeracy());
                     },
                   ),
@@ -123,7 +127,7 @@ class Dashboard extends StatelessWidget {
                     title: 'Social Skill Module',
                     icon: AssetImage('assets/icons/social.png'),
                     color: Colors.orange,
-                    onTap: (){
+                    onTap: () {
                       Get.to(() => SocialSkills());
                     },
                   ),
@@ -133,7 +137,7 @@ class Dashboard extends StatelessWidget {
                     title: 'Stimuli Training',
                     icon: AssetImage('assets/icons/stimuli.png'),
                     color: Colors.orange,
-                    onTap: (){
+                    onTap: () {
                       Get.to(() => Stimulus());
                     },
                   ),

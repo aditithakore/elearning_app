@@ -46,7 +46,8 @@ class GuessAnimalUI extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/images/background.png'), // Replace with your background image path
+                    image: AssetImage(
+                        'assets/images/background.png'), // Replace with your background image path
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -66,12 +67,14 @@ class GuessAnimalUI extends StatelessWidget {
                             children: [
                               Text(
                                 'Score: ${controller.score.value}',
-                                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                               SizedBox(width: 180),
                               Text(
                                 'Who am I?',
-                                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                               SizedBox(width: 180),
                               IconButton(
@@ -79,16 +82,15 @@ class GuessAnimalUI extends StatelessWidget {
                                 onPressed: () {
                                   Get.defaultDialog(
                                     title: 'Hint',
-                                    middleText: controller
-                                        .animals[controller.currentAnimalIndex.value]['description']
-                                    as String,
+                                    middleText: controller.animals[controller
+                                        .currentAnimalIndex
+                                        .value]['description'] as String,
                                   );
                                 },
                               )
                             ],
                           )
                           // SizedBox(width: 10),
-
                         ],
                       ),
                     ),
@@ -96,7 +98,8 @@ class GuessAnimalUI extends StatelessWidget {
                     // Animal Image
                     Obx(() {
                       return Image.asset(
-                        controller.animals[controller.currentAnimalIndex.value]['image'] as String,
+                        controller.animals[controller.currentAnimalIndex.value]
+                            ['image'] as String,
                         height: 200,
                         width: 200,
                       );
@@ -107,10 +110,12 @@ class GuessAnimalUI extends StatelessWidget {
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: controller.options.map((option) {
+                          int currIndex = controller.options.indexOf(option);
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: ElevatedButton(
-                              onPressed: () => controller.checkAnswer(option),
+                              onPressed: () => controller.checkAnswer(
+                                  selectedOption: option, index: currIndex),
                               child: Text(option),
                             ),
                           );
@@ -119,7 +124,6 @@ class GuessAnimalUI extends StatelessWidget {
                     }),
                     // SizedBox(height: 20),
                     // Score Display
-
                   ],
                 ),
               ),
