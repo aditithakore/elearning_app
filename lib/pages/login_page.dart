@@ -4,6 +4,7 @@ import 'package:elearning_app/pages/dashboard.dart';
 import 'package:elearning_app/pages/rotatesplash.dart';
 import 'package:elearning_app/screens/dashboard_screen.dart';
 import 'package:elearning_app/services/authService.dart';
+import 'package:elearning_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -69,7 +70,7 @@ class LoginPageState extends State<LoginPage> {
   }
 
   Widget _header(context) {
-            final width = MediaQuery.sizeOf(context).width;
+    final width = MediaQuery.sizeOf(context).width;
     final height = MediaQuery.sizeOf(context).height;
     return Column(
       children: [
@@ -79,8 +80,9 @@ class LoginPageState extends State<LoginPage> {
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 10),
-        Image.asset('assets/icons/login.png',
-        height: height* 0.25,
+        Image.asset(
+          'assets/icons/login.png',
+          height: height * 0.25,
         ),
       ],
     );
@@ -251,6 +253,7 @@ class LoginPageState extends State<LoginPage> {
       final response = await _authService.login(email, password);
       // Handle the response, like saving the token or navigating to the next page
       print('Login successful: ${response['token']}');
+      Utils().setAuthToken(response['token']);
       Get.to(() => const Rotatesplash());
 
       await Future.delayed(const Duration(seconds: 3));

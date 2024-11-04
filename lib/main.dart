@@ -27,11 +27,14 @@ import 'package:elearning_app/pages/socialSkillsGame/socialSkillsGameUI.dart';
 import 'package:elearning_app/screens/dashboard_screen.dart';
 import 'package:elearning_app/screens/onboarding.dart';
 import 'package:elearning_app/screens/userinfo.dart';
+import 'package:elearning_app/services/userService.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  Get.put(() => UserService());
   runApp(const MyApp());
 }
 
@@ -49,7 +52,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: OnboardingScreen(),
+      home: Dashboard(),
     );
   }
 }
