@@ -19,7 +19,7 @@ class ColorShapeController extends GetxController {
   ].obs;
   var colorsLen = 0.obs;
   var score = 0.obs;
-  final int scoreLimit = 5;
+  final int scoreLimit = 10;
   var isGameOver = false.obs;
 
   ColorShapeController() {
@@ -38,6 +38,9 @@ class ColorShapeController extends GetxController {
         isGameOver.value = true;
       }
     } else {
+      if(score.value>0){
+        score.value--;
+      }
       isSuccess.value = false;
       isFailed.value = true;
     }
