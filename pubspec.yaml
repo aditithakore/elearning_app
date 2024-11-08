@@ -76,6 +76,7 @@ flutter:
     - assets/images/fruits/
     - assets/images/animals/
     - assets/images/social/
+    - assets/images/badges/
     - assets/icons/
     - assets/icons/onboard/
   #   - images/a_dot_burr.jpeg

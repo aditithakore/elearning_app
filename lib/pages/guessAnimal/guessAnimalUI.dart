@@ -27,7 +27,7 @@ class GuessAnimalUI extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 Text(
-                  'You guessed correctly 5 times!',
+                  'You guessed ${controller.score.value}/${controller.animals.length-1} correctly times!',
                   style: TextStyle(fontSize: 24),
                 ),
                 SizedBox(height: 20),

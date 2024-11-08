@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
@@ -8,20 +7,23 @@ import 'matchFruitsModel.dart';
 
 class MatchFruitsController extends GetxController {
   final FlutterTts flutterTts = FlutterTts();
+  var score = 30.obs; // Initial score set to 30
+  var incorrect = 0.obs;
   var isSuccess = false.obs;
   var matchedMessage = ''.obs;
-  var quotesApple="An apple a day keeps the doctor way";
-  var quotesbanana="Bananas give you energy to play all day";
-  var quotescherry="Cherry, cherry, red and bright, take a bite and feel the delight!";
-  var quoteswatermelon="Watermelon is juicy and cool, perfect for a sunny day at the pool!";
-  var quoteskiwi="Kiwi, kiwi, fuzzy and small, green and yummy for one and all!";
-  var quotesavocado="creamy and green, spread it on toast and you'll feel keen!";
-  var quotescoconut="Coconuts are nature’s surprise, with milk and a treat inside!";
-  var quotesgrapes="Grapes are tiny, sweet, and neat, a perfect snack that can't be beat!";
-  var quotespear="Pear, pear, yellow or green, juicy and yummy, fit for a queen!";
-  var quotesmango="Mango is the king of fruits, juicy and sweet, a real treat!";
-  var quotestrawberry="Strawberries are berry delicious and full of vitamin C!";
 
+  // Fruit quotes
+  var quotesApple = "An apple a day keeps the doctor away";
+  var quotesbanana = "Bananas give you energy to play all day";
+  var quotescherry = "Cherry, cherry, red and bright, take a bite and feel the delight!";
+  var quoteswatermelon = "Watermelon is juicy and cool, perfect for a sunny day at the pool!";
+  var quoteskiwi = "Kiwi, kiwi, fuzzy and small, green and yummy for one and all!";
+  var quotesavocado = "creamy and green, spread it on toast and you'll feel keen!";
+  var quotescoconut = "Coconuts are nature’s surprise, with milk and a treat inside!";
+  var quotesgrapes = "Grapes are tiny, sweet, and neat, a perfect snack that can't be beat!";
+  var quotespear = "Pear, pear, yellow or green, juicy and yummy, fit for a queen!";
+  var quotesmango = "Mango is the king of fruits, juicy and sweet, a real treat!";
+  var quotestrawberry = "Strawberries are berry delicious and full of vitamin C!";
 
   // List of all available fruits
   List<ImageItem> allItems = [
@@ -99,12 +101,45 @@ class MatchFruitsController extends GetxController {
       Future.delayed(Duration(seconds: 2), () {
         matchedMessage.value = '';
       });
+    } else {
+      Get.dialog(
+        AlertDialog(
+          title: Text(
+            'Incorrect Match',
+            style: TextStyle(
+              color: Colors.red, // Set the text color to red
+            ),
+          ),
+          // actions: [
+          //   TextButton(
+          //     onPressed: () => Get.back(),
+          //     child: Text('Close'),
+          //   ),
+          // ],
+        ),
+      );
+      incorrect.value++; // Increment the incorrect count properly
+
+      // Update score based on incorrect attempts
+      updateScore();
     }
+
     if (matchedItems.length == items.length) {
       isSuccess.value = true;
     }
   }
 
+  void updateScore() {
+    if (incorrect.value == 0) {
+      score.value = 30;
+    } else if (incorrect.value == 1) {
+      score.value = 20;
+    } else if (incorrect.value == 2) {
+      score.value = 10;
+    } else {
+      score.value = 0;  // For 3 or more incorrect matches
+    }
+  }
 
   Future<void> speak(String text) async {
     await flutterTts.setLanguage("en-US");
@@ -124,6 +159,8 @@ class MatchFruitsController extends GetxController {
     shuffledItems = List.from(items)..shuffle();
 
     isSuccess.value = false;
+    incorrect.value = 0; // Reset the incorrect count
+    score.value = 30;   // Reset the score to 30 when resetting the game
   }
 
   void showMatchDialog(ImageItem item) {
@@ -134,44 +171,74 @@ class MatchFruitsController extends GetxController {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(item.imagePath,height: 50,width: 50,),
+            Image.asset(
+              item.imagePath,
+              height: 50,
+              width: 50,
+            ),
             SizedBox(height: 10),
             Container(
-              child:
-              item.id.toString().toLowerCase()=="apple"?
-              Text("$quotesApple",maxLines: 3,):
-              item.id.toString().toLowerCase()=="banana"?
-              Text("$quotesbanana",maxLines: 3,):
-              item.id.toString().toLowerCase()=="avocado"?
-              Text("$quotesavocado",maxLines: 3,):
-              item.id.toString().toLowerCase()=="mango"?
-              Text("$quotesmango",maxLines: 3,):
-              item.id.toString().toLowerCase()=="cherry"?
-              Text("$quotescherry",maxLines: 3,):
-              item.id.toString().toLowerCase()=="watermelon"?
-              Text("$quoteswatermelon",maxLines: 3,):
-              item.id.toString().toLowerCase()=="kiwi-fruit"?
-              Text("$quoteskiwi-fruit",maxLines: 3,):
-              item.id.toString().toLowerCase()=="coconut"?
-              Text("$quotescoconut",maxLines: 3,):
-              item.id.toString().toLowerCase()=="grapes"?
-              Text("$quotesgrapes",maxLines: 3,):
-              item.id.toString().toLowerCase()=="pear"?
-              Text("$quotespear",maxLines: 3,):
-
-              Text(' '),
-
-            )
-
+              child: item.id.toString().toLowerCase() == "apple"
+                  ? Text(
+                "$quotesApple",
+                maxLines: 3,
+              )
+                  : item.id.toString().toLowerCase() == "banana"
+                  ? Text(
+                "$quotesbanana",
+                maxLines: 3,
+              )
+                  : item.id.toString().toLowerCase() == "avocado"
+                  ? Text(
+                "$quotesavocado",
+                maxLines: 3,
+              )
+                  : item.id.toString().toLowerCase() == "mango"
+                  ? Text(
+                "$quotesmango",
+                maxLines: 3,
+              )
+                  : item.id.toString().toLowerCase() == "cherry"
+                  ? Text(
+                "$quotescherry",
+                maxLines: 3,
+              )
+                  : item.id.toString().toLowerCase() == "watermelon"
+                  ? Text(
+                "$quoteswatermelon",
+                maxLines: 3,
+              )
+                  : item.id.toString().toLowerCase() == "kiwi-fruit"
+                  ? Text(
+                "$quoteskiwi",
+                maxLines: 3,
+              )
+                  : item.id.toString().toLowerCase() == "coconut"
+                  ? Text(
+                "$quotescoconut",
+                maxLines: 3,
+              )
+                  : item.id.toString().toLowerCase() == "grapes"
+                  ? Text(
+                "$quotesgrapes",
+                maxLines: 3,
+              )
+                  : item.id.toString().toLowerCase() == "pear"
+                  ? Text(
+                "$quotespear",
+                maxLines: 3,
+              )
+                  : Text(' '),
+            ),
           ],
         ),
         actions: [
           TextButton(
-              onPressed: ()=>Get.back(),
-              child: Text('Close'))
+            onPressed: () => Get.back(),
+            child: Text('Close'),
+          ),
         ],
-      )
+      ),
     );
   }
 }
-

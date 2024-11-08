@@ -70,11 +70,11 @@ class MatchFruitsUI extends StatelessWidget {
                                 builder: (context, candidateData, rejectedData) {
                                   return Obx(
                                         () => SizedBox(
-                                          height: 150,
-                                          width: 150,
-                                          child: Card(
-                                            elevation: 4,
-                                            child: Container(
+                                      height: 150,
+                                      width: 150,
+                                      child: Card(
+                                        elevation: 4,
+                                        child: Container(
                                           height: 70,
                                           width: 70,
                                           margin: EdgeInsets.all(4),
@@ -90,9 +90,9 @@ class MatchFruitsUI extends StatelessWidget {
                                                 ? Container(child: Icon(Icons.check_circle,size:50,color: Colors.green,))
                                                 : Image.asset(item.imagePath, height: 125, width: 125),
                                           ),
-                                            ),
-                                          ),
                                         ),
+                                      ),
+                                    ),
                                   );
                                 },
                               );
@@ -115,11 +115,11 @@ class MatchFruitsUI extends StatelessWidget {
                                 ),
                                 child: Obx(
                                       () => SizedBox(
-                                        height: 150,
-                                        width: 150,
-                                        child: Card(
-                                          elevation: 4,
-                                          child: Container(
+                                    height: 150,
+                                    width: 150,
+                                    child: Card(
+                                      elevation: 4,
+                                      child: Container(
                                         height: 70,
                                         width: 70,
                                         margin: EdgeInsets.all(4),
@@ -130,9 +130,9 @@ class MatchFruitsUI extends StatelessWidget {
                                         child: controller.matchedItems.contains(item.id)
                                             ? Container(child: Obx(() => Text(controller.matchedMessage.value)))
                                             : Image.asset(item.imagePath, height: 50, width: 50),
-                                                                            ),
-                                                                          ),
                                       ),
+                                    ),
+                                  ),
                                 ),
                               );
                             }).toList(),
@@ -141,13 +141,38 @@ class MatchFruitsUI extends StatelessWidget {
                       ],
                     ),
                   )
-                      : ElevatedButton(
-                    onPressed: () {
-                      controller.reset();
-                    },
-                    child: Text('Replay'),
+                      : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          controller.reset();
+                        },
+                        child: Text('Replay'),
+                      ),
+                      SizedBox(height: 20),
+                      // Display score after success
+                      Text(
+                        'Your Score: ${controller.score.value}',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      // Display note explaining the score calculation
+                      Text(
+                        'Score is calculated based on the number of \n correct matches made in the first attempt.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black54,
+                        ),
+                      ),
+                    ],
                   ),
-                ),
+                )
+                ,
               ],
             )
           ],
