@@ -49,29 +49,18 @@ class GuessAnimalController extends GetxController {
     allNames.shuffle();
 
     var randomOptions =
-        allNames.take(3).toList(); // Take two random unique names
+    allNames.take(3).toList(); // Take two random unique names
     randomOptions.add(correctAnswer); // Add the correct answer
     randomOptions.shuffle(); // Shuffle the list to randomize the order
     return randomOptions;
   }
 
-  // Check if the selected option is correct
+  //Check if the selected option is correct
   void checkAnswer({required String selectedOption, required int index}) {
     if (selectedOption == animals[currentAnimalIndex.value]['name']) {
       score++;
-      // if(score>=5){
-      //   showCongratulations.value=true;
-      //   score.value=0;
-      // }
       loadNextAnimal();
-    } else {
-      loadNextAnimal();
-    }
-    if (index == animals.length - 1) {
-      showCongratulations.value = true;
-      
-    }
-    else{
+    } else{
       Get.dialog(
         AlertDialog(
           title: Text(
