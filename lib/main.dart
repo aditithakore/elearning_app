@@ -37,7 +37,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  Get.put(() => UserService());
+  Get.put(() => UserService().fetchUser());
   runApp(const MyApp());
 }
 
@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: ColorShapesUI(),
+      home: OnboardingScreen(),
     );
   }
 }

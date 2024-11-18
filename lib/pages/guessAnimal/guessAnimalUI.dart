@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'guessAnimalController.dart';
@@ -99,7 +99,7 @@ class GuessAnimalUI extends StatelessWidget {
                     Obx(() {
                       return Image.asset(
                         controller.animals[controller.currentAnimalIndex.value]
-                            ['image'] as String,
+                        ['image'] as String,
                         height: 200,
                         width: 200,
                       );
@@ -115,7 +115,7 @@ class GuessAnimalUI extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             child: ElevatedButton(
                               onPressed: () => controller.checkAnswer(
-                                  selectedOption: option, index: currIndex),
+                                  selectedOption: option,index:currIndex),
                               child: Text(option),
                             ),
                           );
