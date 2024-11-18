@@ -1,1 +1,1 @@
-const String baseurl = "https://puny-mice-relate.loca.lt";
+const String baseurl = "https://some-rules-train.loca.lt";
