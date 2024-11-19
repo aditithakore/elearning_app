@@ -23,6 +23,7 @@ import 'package:elearning_app/pages/progressPage/progressUI.dart';
 import 'package:elearning_app/pages/rotatesplash.dart';
 import 'package:elearning_app/pages/sensorybin.dart';
 import 'package:elearning_app/pages/signup_page.dart';
+import 'package:elearning_app/pages/wordGame/wordGameUI.dart';
 import 'package:elearning_app/screens/Childtestpage.dart';
 import 'package:elearning_app/screens/Lastpage.dart';
 import 'package:elearning_app/screens/cognitivepage.dart';
@@ -61,7 +62,7 @@ class MyApp extends StatelessWidget {
         builder: (context, snapshot) {
           if(snapshot.connectionState==ConnectionState.done){
             if(snapshot.data!=null){
-              return EditProfile();
+              return WordGameScreen();
             }
             return LoginPage();
           }

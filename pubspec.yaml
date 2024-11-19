@@ -81,6 +81,7 @@ flutter:
     - assets/images/badges/
     - assets/icons/
     - assets/icons/onboard/
+    - assets/images/words/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
