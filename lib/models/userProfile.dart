@@ -6,9 +6,10 @@ class UserProfile {
   UserProfile({this.sId, this.childage, this.childname});
 
   UserProfile.fromJson(Map<String, dynamic> json) {
-    sId = json['_id'];
-    childage = json['childage'];
-    childname = json['childname'];
+    print(json);
+    sId = json['user_details']['_id'];
+    childage = json['user_details']['childage'];
+    childname = json['user_details']['childname'];
   }
 
   Map<String, dynamic> toJson() {
