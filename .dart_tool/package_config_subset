@@ -30,6 +30,10 @@ crypto
 2.19
 file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/crypto-3.0.3/
 file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/crypto-3.0.3/lib/
+csv
+2.12
+file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/csv-6.0.0/
+file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/csv-6.0.0/lib/
 cupertino_icons
 3.1
 file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/cupertino_icons-1.0.8/
@@ -94,6 +98,10 @@ http_parser
 2.12
 file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/http_parser-4.0.2/
 file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/http_parser-4.0.2/lib/
+intl
+3.0
+file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.19.0/
+file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.19.0/lib/
 leak_tracker
 3.2
 file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker-10.0.4/

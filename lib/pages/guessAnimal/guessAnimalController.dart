@@ -1,25 +1,94 @@
+import 'package:elearning_app/common/constant.dart';
+import 'package:elearning_app/pages/dashboard_controller.dart';
+import 'package:elearning_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
 class GuessAnimalController extends GetxController {
   // List of animals with names and descriptions
   final animals = [
-    {'name': 'Dog', 'image': 'assets/images/animals/dog.png', 'description': 'I love to bark and wag my tail.'},
-    {'name': 'Lion', 'image': 'assets/images/animals/lion.png', 'description': 'I am the king of the jungle.'},
-    {'name': 'Tiger', 'image': 'assets/images/animals/tiger.png', 'description': 'I have stripes and a loud roar.'},
-    {'name': 'Giraffe', 'image': 'assets/images/animals/giraffe.png', 'description': 'I have a long neck.'},
-    {'name': 'Monkey', 'image': 'assets/images/animals/monkey.png', 'description': 'I love to swing from trees.'},
-    {'name': 'Zebra', 'image': 'assets/images/animals/zebra.png', 'description': 'I have black and white stripes.'},
-    {'name': 'Yak', 'image': 'assets/images/animals/yak.png', 'description': 'I am a large animal with long hair and horns, found in cold mountain regions.'},
-    {'name': 'Octopus', 'image': 'assets/images/animals/octopus.png', 'description': 'I have eight arms and live in the ocean.'},
-    {'name': 'Fox', 'image': 'assets/images/animals/fox.png', 'description': 'As cunning as a .......'},
-    {'name': 'Honeybee', 'image': 'assets/images/animals/honey.png', 'description': 'I make honey and love to buzz around flowers.'},
-    {'name': 'Panda', 'image': 'assets/images/animals/panda.png', 'description': 'I am black and white and love eating bamboo.'},
-    {'name': 'Frog', 'image': 'assets/images/animals/frog.png', 'description': 'I can jump high and live near water.'},
-    {'name': 'Wolf', 'image': 'assets/images/animals/wolf.png', 'description': 'I live in packs and howl at the moon.'},
-    {'name': 'Rhinoceros', 'image': 'assets/images/animals/rhinoceros.png', 'description': 'I have thick skin and a large horn on my nose.'},
-    {'name': 'Rabbit', 'image': 'assets/images/animals/rabbit.png', 'description': 'I have long ears and love to hop around.'},
-    {'name': 'Hippopotamus', 'image': 'assets/images/animals/hippopotamus.png', 'description': 'I am big and spend a lot of time in the water.'},
+    {
+      'name': 'Dog',
+      'image': 'assets/images/animals/dog.png',
+      'description': 'I love to bark and wag my tail.'
+    },
+    {
+      'name': 'Lion',
+      'image': 'assets/images/animals/lion.png',
+      'description': 'I am the king of the jungle.'
+    },
+    {
+      'name': 'Tiger',
+      'image': 'assets/images/animals/tiger.png',
+      'description': 'I have stripes and a loud roar.'
+    },
+    {
+      'name': 'Giraffe',
+      'image': 'assets/images/animals/giraffe.png',
+      'description': 'I have a long neck.'
+    },
+    {
+      'name': 'Monkey',
+      'image': 'assets/images/animals/monkey.png',
+      'description': 'I love to swing from trees.'
+    },
+    {
+      'name': 'Zebra',
+      'image': 'assets/images/animals/zebra.png',
+      'description': 'I have black and white stripes.'
+    },
+    {
+      'name': 'Yak',
+      'image': 'assets/images/animals/yak.png',
+      'description':
+          'I am a large animal with long hair and horns, found in cold mountain regions.'
+    },
+    {
+      'name': 'Octopus',
+      'image': 'assets/images/animals/octopus.png',
+      'description': 'I have eight arms and live in the ocean.'
+    },
+    {
+      'name': 'Fox',
+      'image': 'assets/images/animals/fox.png',
+      'description': 'As cunning as a .......'
+    },
+    {
+      'name': 'Honeybee',
+      'image': 'assets/images/animals/honey.png',
+      'description': 'I make honey and love to buzz around flowers.'
+    },
+    {
+      'name': 'Panda',
+      'image': 'assets/images/animals/panda.png',
+      'description': 'I am black and white and love eating bamboo.'
+    },
+    {
+      'name': 'Frog',
+      'image': 'assets/images/animals/frog.png',
+      'description': 'I can jump high and live near water.'
+    },
+    {
+      'name': 'Wolf',
+      'image': 'assets/images/animals/wolf.png',
+      'description': 'I live in packs and howl at the moon.'
+    },
+    {
+      'name': 'Rhinoceros',
+      'image': 'assets/images/animals/rhinoceros.png',
+      'description': 'I have thick skin and a large horn on my nose.'
+    },
+    {
+      'name': 'Rabbit',
+      'image': 'assets/images/animals/rabbit.png',
+      'description': 'I have long ears and love to hop around.'
+    },
+    {
+      'name': 'Hippopotamus',
+      'image': 'assets/images/animals/hippopotamus.png',
+      'description': 'I am big and spend a lot of time in the water.'
+    },
     // {'name': 'Antelope', 'image': 'assets/images/animals/antelope.png', 'description': 'I am graceful and can run very fast.'},
   ];
   var score = 0.obs; // Score counter
@@ -49,18 +118,18 @@ class GuessAnimalController extends GetxController {
     allNames.shuffle();
 
     var randomOptions =
-    allNames.take(3).toList(); // Take two random unique names
+        allNames.take(3).toList(); // Take two random unique names
     randomOptions.add(correctAnswer); // Add the correct answer
     randomOptions.shuffle(); // Shuffle the list to randomize the order
     return randomOptions;
   }
 
   //Check if the selected option is correct
-  void checkAnswer({required String selectedOption, required int index}) {
+  void checkAnswer({required String selectedOption, required int index}) async {
     if (selectedOption == animals[currentAnimalIndex.value]['name']) {
       score++;
       loadNextAnimal();
-    } else{
+    } else {
       Get.dialog(
         AlertDialog(
           title: Text(
@@ -74,9 +143,33 @@ class GuessAnimalController extends GetxController {
       );
       loadNextAnimal();
     }
-    if(currentAnimalIndex.value==animals.length-1){
-      showCongratulations.value=true;
+    if (currentAnimalIndex.value == animals.length - 1) {
+      showCongratulations.value = true;
       // score.value=0;
+      try {
+        String? token = await Utils().getAuthToken();
+        final url = Uri.parse(
+            "$baseurl/user/progress/${Get.find<DashboardController>().userProfile.value.sId}");
+        print("Saving progress $url");
+
+        final response = await http.post(url, headers: {
+          "Authorization": "Bearer $token" ?? '',
+        }, body: {
+          "gameName": "GuessAnimal",
+          "score": score.value.toString()
+        });
+
+        print("Response status: ${response.statusCode}");
+        print("Response body: ${response.body}");
+
+        if (response.statusCode == 200) {
+        } else {
+          throw Exception('Failed to save progress');
+        }
+      } catch (e) {
+        print("Error occurred: $e");
+        rethrow;
+      }
     }
   }
 

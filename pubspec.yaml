@@ -47,6 +47,8 @@ dependencies:
   get: ^4.6.6
   shared_preferences: ^2.3.2
   fl_chart: ^0.69.0
+  intl: ^0.19.0
+  csv: ^6.0.0
 
 
 dev_dependencies:
@@ -74,11 +76,13 @@ flutter:
   # To add assets to your application, add an assets section, like this
   assets:
     - assets/animation/
+    - assets/
     - assets/images/
     - assets/images/fruits/
     - assets/images/animals/
     - assets/images/social/
     - assets/images/badges/
+    - assets/images/words/
     - assets/icons/
     - assets/icons/onboard/
   #   - images/a_dot_burr.jpeg

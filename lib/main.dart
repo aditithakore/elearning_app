@@ -20,6 +20,7 @@ import 'package:elearning_app/pages/numberLearning/numberLearningUI.dart';
 import 'package:elearning_app/pages/numeracy.dart';
 import 'package:elearning_app/pages/progressPage/editProfile.dart';
 import 'package:elearning_app/pages/progressPage/progressUI.dart';
+import 'package:elearning_app/pages/questionnaire/questionnaire_page.dart';
 import 'package:elearning_app/pages/rotatesplash.dart';
 import 'package:elearning_app/pages/sensorybin.dart';
 import 'package:elearning_app/pages/signup_page.dart';
@@ -42,9 +43,10 @@ void main() {
   runApp(const MyApp());
 }
 
+final authToken = Utils().getAuthToken();
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -57,16 +59,18 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: FutureBuilder(
-        future: Utils().getAuthToken(),
+        future: authToken,
         builder: (context, snapshot) {
-          if(snapshot.connectionState==ConnectionState.done){
-            if(snapshot.data!=null){
-              return LoginPage();
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.data != null) {
+              return Dashboard();
             }
-            return LoginPage();
+            return QuestionnaireScreen();
           }
-          return Center(
-            child: CircularProgressIndicator(),
+          return Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
           );
         },
       ),

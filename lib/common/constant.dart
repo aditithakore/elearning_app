@@ -1,1 +1,1 @@
-const String baseurl = "https://common-forks-bet.loca.lt";
+const String baseurl = "http://10.0.2.2:3001";
