@@ -31,36 +31,38 @@ class LoginPageState extends State<LoginPage> {
     //   DeviceOrientation.portraitDown,
     // ]);
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(
-                  'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v1015-111c-kstoqf1a.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=f016449eaa797aebe6ad6b921eaaf502'),
-              fit: BoxFit.cover,
-            ),
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(
+                'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v1015-111c-kstoqf1a.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=f016449eaa797aebe6ad6b921eaaf502'),
+            fit: BoxFit.cover,
           ),
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const Spacer(flex: 2),
-                  _header(context),
-                  const Spacer(flex: 2),
-                  _inputField(context),
-                  _forgotPassword(context),
-                  const SizedBox(height: 10),
-                  _divider(),
-                  const SizedBox(height: 15),
-                  _googleSignIn(),
-                  const SizedBox(height: 15),
-                  _signup(context),
-                  const Spacer(),
-                ],
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: SingleChildScrollView(
+              child: SizedBox(
+                height: MediaQuery.sizeOf(context).height,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    const Spacer(flex: 2),
+                    _header(context),
+                    const Spacer(flex: 2),
+                    _inputField(context),
+                    _forgotPassword(context),
+                    const SizedBox(height: 10),
+                    _divider(),
+                    const SizedBox(height: 15),
+                    _googleSignIn(),
+                    const SizedBox(height: 15),
+                    _signup(context),
+                    const Spacer(),
+                  ],
+                ),
               ),
             ),
           ),

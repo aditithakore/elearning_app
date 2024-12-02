@@ -1,7 +1,9 @@
 import 'package:elearning_app/pages/dashboard_controller.dart';
+import 'package:elearning_app/pages/login_page.dart';
 import 'package:elearning_app/pages/progressPage/performancePage.dart';
 import 'package:elearning_app/pages/socialskills.dart';
 import 'package:elearning_app/pages/stimulus.dart';
+import 'package:elearning_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -14,7 +16,8 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(DashboardController()); // Use instance of DashboardController
+    final controller =
+        Get.put(DashboardController()); // Use instance of DashboardController
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
@@ -75,7 +78,6 @@ class Dashboard extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-
                 final userId = controller.userProfile.value.sId;
                 print(userId);
                 print(controller.userProfile.value.toJson().toString());
@@ -88,6 +90,16 @@ class Dashboard extends StatelessWidget {
               },
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.only(right: 40),
+            child: IconButton(
+              icon: Icon(Icons.logout),
+              onPressed: () async {
+                await Utils().removeAuthToken();
+                await Get.offAll(LoginPage());
+              },
+            ),
+          )
         ],
         systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
