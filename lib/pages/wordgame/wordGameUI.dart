@@ -1,10 +1,15 @@
 import 'package:elearning_app/pages/wordgame/wordGameController.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 class WordGameScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
     return ChangeNotifierProvider(
       create: (_) => WordGameController(),
       child: _WordGameView(),
@@ -82,7 +87,7 @@ class _WordGameView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(Icons.star, color: Colors.amber),
-              SizedBox(width: 8),
+              SizedBox(width: 5),
               Text(
                 'Score: ${controller.score}',
                 style: TextStyle(

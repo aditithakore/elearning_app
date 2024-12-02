@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
             if (snapshot.data != null) {
               return Dashboard();
             }
-            return QuestionnaireScreen();
+            return LoginPage();
           }
           return Scaffold(
             body: Center(

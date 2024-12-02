@@ -12,8 +12,9 @@ class QuestionnaireScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-            'Section ${controller.currentSectionIndex.value + 1}/${controller.csvFileNames.length}'), // Dynamically update title
+        title: Obx(() => Text(
+              'Section ${controller.currentSectionIndex.value + 1}/${controller.csvFileNames.length}',
+            )),
       ),
       body: PageView.builder(
         controller: controller.pageController,

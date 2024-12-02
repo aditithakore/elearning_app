@@ -21,10 +21,10 @@ class PuzzleScreen extends StatefulWidget {
 
 class _PuzzleScreenState extends State<PuzzleScreen> {
   List<String> images = [
-    'assets/images/elethree.jpg',
-    'assets/images/eleone.jpg',
-    'assets/images/elefour.jpg',
-    'assets/images/eletwo.jpg',
+    'assets\images\animals\cat.png',
+    'assets\images\animals\cat.png',
+    'assets\images\animals\cat.png',
+    'assets\images\animals\cat.png',
   ];
 
   List<String> shuffledImages = [];
