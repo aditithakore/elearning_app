@@ -62,6 +62,18 @@
       "languageVersion": "3.1"
     },
     {
+      "name": "dio",
+      "rootUri": "file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/dio-5.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "dio_web_adapter",
+      "rootUri": "file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/dio_web_adapter-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
       "name": "equatable",
       "rootUri": "file:///C:/Users/Aditi/AppData/Local/Pub/Cache/hosted/pub.dev/equatable-2.0.5",
       "packageUri": "lib/",
@@ -446,7 +458,7 @@
       "languageVersion": "3.3"
     }
   ],
-  "generated": "2024-11-21T17:54:53.110938Z",
+  "generated": "2024-12-02T16:33:39.175750Z",
   "generator": "pub",
   "generatorVersion": "3.4.4",
   "flutterRoot": "file:///C:/Users/Aditi/Downloads/flutter_windows_3.19.6-stable/flutter",

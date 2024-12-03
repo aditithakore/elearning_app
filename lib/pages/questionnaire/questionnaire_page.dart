@@ -16,6 +16,12 @@ class QuestionnaireScreen extends StatelessWidget {
               'Section ${controller.currentSectionIndex.value + 1}/${controller.csvFileNames.length}',
             )),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => controller.pageController.animateToPage(
+            controller.csvFileNames.length - 1,
+            duration: Duration(seconds: 1),
+            curve: Curves.bounceIn),
+      ),
       body: PageView.builder(
         controller: controller.pageController,
         physics:
@@ -32,10 +38,19 @@ class QuestionnaireScreen extends StatelessWidget {
                       for (int i = 0;
                           i < controller.currentSectionQuestions.length;
                           i++)
+                        // QuestionWidget(
+                        //   question: controller.currentSectionQuestions[i],
+                        //   onAnswerSelected: (answer) =>
+                        //       controller.saveAnswer(answer),
+                        // ),
                         QuestionWidget(
                           question: controller.currentSectionQuestions[i],
-                          onAnswerSelected: (answer) =>
-                              controller.saveAnswer(answer),
+                          selectedAnswer: controller.selectedAnswers[
+                              index * 10 + i], // Get current selected answer
+                          section: index,
+                          onAnswerSelected: (answer) => controller.saveAnswer(
+                              index * 10 + i,
+                              answer), // Save answer with question index
                         ),
                       const SizedBox(height: 20),
                       if (controller.isLastSection())

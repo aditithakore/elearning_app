@@ -1,3 +1,4 @@
+import 'package:elearning_app/pages/questionnaire/questionnaire_page.dart';
 import 'package:elearning_app/screens/speechelevelpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -54,7 +55,7 @@ class ChildTestPage extends StatelessWidget {
                   onPressed: () {
                      Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => SpeechLevelPage()),
+                          MaterialPageRoute(builder: (context) => QuestionnaireScreen()),
                         );
                   },
                   child: Row(
