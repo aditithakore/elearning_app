@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:elearning_app/additiongame.dart';
 import 'package:elearning_app/pages/alphabetLearning/alphabetLearningUI.dart';
 import 'package:elearning_app/pages/bodyParts/bodyPartsUI.dart';
 import 'package:elearning_app/pages/colorShapes/colorShapesUI.dart';
@@ -149,6 +150,16 @@ class Numeracy extends StatelessWidget {
                     color: Colors.orange,
                     onTap: () {
                       Get.to(() => MemoryGameUI());
+                    },
+                  ),
+                  SizedBox(width: 16.0),
+                  _buildModule(
+                    context: context,
+                    title: 'Addition Game',
+                    icon: AssetImage('assets/icons/addiition.png'),
+                    color: Colors.orange,
+                    onTap: () {
+                      Get.to(() => AdditionGame());
                     },
                   ),
                   // Add more modules here if needed

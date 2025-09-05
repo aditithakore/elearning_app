@@ -1,20 +1,28 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'package:elearning_app/pages/literacy.dart';
-import 'package:elearning_app/pages/numeracy.dart';
+import 'package:elearning_app/pages/dashboard_controller.dart';
+import 'package:elearning_app/pages/login_page.dart';
+import 'package:elearning_app/pages/progressPage/performancePage.dart';
 import 'package:elearning_app/pages/socialskills.dart';
 import 'package:elearning_app/pages/stimulus.dart';
+import 'package:elearning_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import 'literacy.dart';
+import 'numeracy.dart';
+
 class Dashboard extends StatelessWidget {
+  const Dashboard({super.key});
+
   @override
   Widget build(BuildContext context) {
+    final controller =
+        Get.put(DashboardController()); // Use instance of DashboardController
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
     ]);
+
     final width = MediaQuery.sizeOf(context).width;
     final height = MediaQuery.sizeOf(context).height;
 
@@ -22,12 +30,12 @@ class Dashboard extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Dashboard',
-        style: TextStyle(
-                      fontSize: 32,
-                      fontFamily: 'Baloo 2',
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
+          style: TextStyle(
+            fontSize: 32,
+            fontFamily: 'Baloo 2',
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
@@ -43,7 +51,7 @@ class Dashboard extends StatelessWidget {
               colors: [
                 Colors.blue.shade100,
                 Colors.blue.shade200,
-                Colors.blue.shade300
+                Colors.blue.shade300,
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomCenter,
@@ -51,14 +59,6 @@ class Dashboard extends StatelessWidget {
             ),
           ),
         ),
-        // leading: Positioned(
-        //   left:30,  // Use margin to move the icon away from the border
-        //   child: CircleAvatar(
-        //     backgroundImage: AssetImage('assets/icons/set.png'),
-        //     radius: 20, // Adjust the size as needed
-        //     backgroundColor: Colors.transparent,
-        //   ),
-        // ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 40),
@@ -67,21 +67,39 @@ class Dashboard extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: Colors.black, // Border color
-                    width: 1.0, // Border width
+                    color: Colors.black,
+                    width: 1.0,
                   ),
                 ),
                 child: CircleAvatar(
                   backgroundImage: AssetImage('assets/icons/P1.png'),
-                  radius: 30, // Adjust the size as needed
+                  radius: 30,
                   backgroundColor: Colors.transparent,
                 ),
               ),
               onPressed: () {
-                // Add navigation to profile screen here
+                final userId = controller.userProfile.value.sId;
+                print(userId);
+                print(controller.userProfile.value.toJson().toString());
+                if (userId != null) {
+                  Get.to(GameProgressPage(userId));
+                } else {
+                  // Handle the case where userId is not available (e.g., show error)
+                  print('ERror');
+                }
               },
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.only(right: 40),
+            child: IconButton(
+              icon: Icon(Icons.logout),
+              onPressed: () async {
+                await Utils().removeAuthToken();
+                await Get.offAll(LoginPage());
+              },
+            ),
+          )
         ],
         systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
@@ -103,7 +121,7 @@ class Dashboard extends StatelessWidget {
                     title: 'Literacy Module',
                     icon: AssetImage('assets/icons/literacy.png'),
                     color: Colors.blue,
-                    onTap: (){
+                    onTap: () {
                       Get.to(() => Literacy());
                     },
                   ),
@@ -113,7 +131,7 @@ class Dashboard extends StatelessWidget {
                     title: 'Numeracy Module',
                     icon: AssetImage('assets/icons/numeracy.png'),
                     color: Colors.green,
-                    onTap: (){
+                    onTap: () {
                       Get.to(() => Numeracy());
                     },
                   ),
@@ -123,7 +141,7 @@ class Dashboard extends StatelessWidget {
                     title: 'Social Skill Module',
                     icon: AssetImage('assets/icons/social.png'),
                     color: Colors.orange,
-                    onTap: (){
+                    onTap: () {
                       Get.to(() => SocialSkills());
                     },
                   ),
@@ -133,7 +151,7 @@ class Dashboard extends StatelessWidget {
                     title: 'Stimuli Training',
                     icon: AssetImage('assets/icons/stimuli.png'),
                     color: Colors.orange,
-                    onTap: (){
+                    onTap: () {
                       Get.to(() => Stimulus());
                     },
                   ),

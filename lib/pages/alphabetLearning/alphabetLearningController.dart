@@ -19,13 +19,14 @@ class AlphabetLearningController extends GetxController {
     fetchAlphabets();
   }
 
-  Future<void> fetchAlphabets() async {
+  Future<void> fetchAlphabets()  async {
     try {
       isLoading(true);
       final response =
           await http.get(Uri.parse('http://10.0.2.2:3001/alphabet'));
       if (response.statusCode == 200) {
         final Map<String, dynamic> data = json.decode(response.body);
+        //key-value pair - data.containsKey('alphabet') && data['alphabet'] != null
         if (data.containsKey('alphabet') && data['alphabet'] != null) {
           final List<dynamic> alphabetsList = data['alphabet'];
           alphabets.value = alphabetsList

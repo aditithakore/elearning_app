@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:elearning_app/animalpuzzle.dart';
 import 'package:elearning_app/pages/alphabetLearning/alphabetLearningUI.dart';
 import 'package:elearning_app/pages/bodyParts/bodyPartsUI.dart';
 import 'package:elearning_app/pages/guessAnimal/guessAnimalUI.dart';
 import 'package:elearning_app/pages/matchFruit/matchFruitsUI.dart';
+import 'package:elearning_app/pages/wordgame/wordGameUI.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -135,6 +137,26 @@ class Literacy extends StatelessWidget {
                     color: Colors.orange,
                     onTap: () {
                       Get.to(() => MatchFruitsUI());
+                    },
+                  ),
+                  SizedBox(width: 16.0),
+                  _buildModule(
+                    context: context,
+                    title: 'Word Game',
+                    icon: AssetImage('assets/icons/jumble.png'),
+                    color: Colors.blue,
+                    onTap: () {
+                      Get.to(() => WordGameScreen());
+                    },
+                  ),
+                  SizedBox(width: 16.0),
+                  _buildModule(
+                    context: context,
+                    title: 'Puzzle Game',
+                    icon: AssetImage('assets/icons/puzzle.png'),
+                    color: Colors.blue,
+                    onTap: () {
+                      Get.to(() => AnimalPuzzleGame());
                     },
                   ),
                   // Add more modules here if needed

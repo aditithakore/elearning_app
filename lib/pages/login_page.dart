@@ -4,6 +4,7 @@ import 'package:elearning_app/pages/dashboard.dart';
 import 'package:elearning_app/pages/rotatesplash.dart';
 import 'package:elearning_app/screens/dashboard_screen.dart';
 import 'package:elearning_app/services/authService.dart';
+import 'package:elearning_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -30,36 +31,38 @@ class LoginPageState extends State<LoginPage> {
     //   DeviceOrientation.portraitDown,
     // ]);
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(
-                  'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v1015-111c-kstoqf1a.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=f016449eaa797aebe6ad6b921eaaf502'),
-              fit: BoxFit.cover,
-            ),
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(
+                'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v1015-111c-kstoqf1a.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=f016449eaa797aebe6ad6b921eaaf502'),
+            fit: BoxFit.cover,
           ),
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const Spacer(flex: 2),
-                  _header(context),
-                  const Spacer(flex: 2),
-                  _inputField(context),
-                  _forgotPassword(context),
-                  const SizedBox(height: 10),
-                  _divider(),
-                  const SizedBox(height: 15),
-                  _googleSignIn(),
-                  const SizedBox(height: 15),
-                  _signup(context),
-                  const Spacer(),
-                ],
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: SingleChildScrollView(
+              child: SizedBox(
+                height: MediaQuery.sizeOf(context).height,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    const Spacer(flex: 2),
+                    _header(context),
+                    const Spacer(flex: 2),
+                    _inputField(context),
+                    _forgotPassword(context),
+                    const SizedBox(height: 10),
+                    _divider(),
+                    const SizedBox(height: 15),
+                    _googleSignIn(),
+                    const SizedBox(height: 15),
+                    _signup(context),
+                    const Spacer(),
+                  ],
+                ),
               ),
             ),
           ),
@@ -69,7 +72,7 @@ class LoginPageState extends State<LoginPage> {
   }
 
   Widget _header(context) {
-            final width = MediaQuery.sizeOf(context).width;
+    final width = MediaQuery.sizeOf(context).width;
     final height = MediaQuery.sizeOf(context).height;
     return Column(
       children: [
@@ -79,8 +82,9 @@ class LoginPageState extends State<LoginPage> {
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 10),
-        Image.asset('assets/icons/login.png',
-        height: height* 0.25,
+        Image.asset(
+          'assets/icons/login.png',
+          height: height * 0.25,
         ),
       ],
     );
@@ -251,6 +255,7 @@ class LoginPageState extends State<LoginPage> {
       final response = await _authService.login(email, password);
       // Handle the response, like saving the token or navigating to the next page
       print('Login successful: ${response['token']}');
+      Utils().setAuthToken(response['token']);
       Get.to(() => const Rotatesplash());
 
       await Future.delayed(const Duration(seconds: 3));

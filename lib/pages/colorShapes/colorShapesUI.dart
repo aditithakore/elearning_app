@@ -25,7 +25,7 @@ class ColorShapesUI extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Obx(() =>
-            colorController.score.value == 5 ?
+            colorController.score.value == 10 ?
                 Text(
                   'Congratulations',
                   style: TextStyle(color: Colors.black, fontSize: 24),
